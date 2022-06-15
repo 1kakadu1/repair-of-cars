@@ -6,9 +6,8 @@ import { Container } from '../../client/components/container/container.component
 import { Footer } from '../../client/components/footer/footer';
 import { Header } from '../../client/components/header/header.component';
 import { wrapper } from '../../client/store/state';
-import cl from "./product.module.scss";
 import { useContext } from 'react';
-import NotificationContext, { NotificationStatus } from '../../client/components/notification-bar/notification-bar.context';
+import NotificationContext from '../../client/components/notification-bar/notification-bar.context';
 import { Loader } from '../../client/components/loader/loader.component';
 
 const Product: NextPage = () => {
