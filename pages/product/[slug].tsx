@@ -9,6 +9,7 @@ import { wrapper } from '../../client/store/state';
 import { useContext } from 'react';
 import NotificationContext from '../../client/components/notification-bar/notification-bar.context';
 import { Loader } from '../../client/components/loader/loader.component';
+import cl from "./product.module.scss";
 
 const Product: NextPage = () => {
   const { updateNotification } = useContext(NotificationContext);
