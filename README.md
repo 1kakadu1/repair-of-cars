@@ -1,7 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Test site for tire repair
 
 ## Getting Started
+Install dependencies
+```bash
+npm install
+#or
+yarn install
+```
+Creating a database. Used Sqlite c orm prisma
 
+```bash
+npx prisma migrate dev
+```
+View data in the database
+
+```bash
+npx prisma studio
+```
 First, run the development server:
 
 ```bash

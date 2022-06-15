@@ -1,0 +1,25 @@
+@import "../../../styles/vars.scss";
+
+.shadow{
+    box-shadow: 0px 0px 8px 4px rgb(34 60 80 / 20%);
+}
+
+.wrapper{
+    padding: 32px;
+    &>h3{
+        font-weight: 500;
+        @include adaptive-var("font-size", 32, 22, 1);
+        @include adaptive-var("line-height", 48, 32, 1);
+        padding-bottom: 16px;
+    }
+    &>p{
+        font-weight: 400;
+        @include adaptive-var("font-size", 16, 12, 1);
+        line-height: 24px;
+        color: #6A6A6A;
+        padding-bottom: 16px;
+        &:last-child{
+            padding-bottom: 0px;
+        }
+    }
+}

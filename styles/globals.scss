@@ -1,0 +1,256 @@
+@import "./vars.scss";
+@import 'react-slidedown/lib/slidedown.css';
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'rc-slider/assets/index.css';
+
+*, *:before, *:after{
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("../client/assets/fonts/Montserrat/Montserrat-Regular.ttf") format('ttf');
+    src: local("Montserrat");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: $font_primary_bold;
+    src: url("../client/assets/fonts/Montserrat/Montserrat-SemiBold.ttf") format('ttf');
+    src: local($font_primary_bold);
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: none;
+    font-family: Montserrat, serif;
+}
+
+footer, header, nav, section, main{
+    display: block;
+}
+
+body{
+    line-height: 1;
+}
+
+ol, ul{
+    list-style: none;
+}
+
+blockquote, q{
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after{
+    content: '';
+    content: none;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input{
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+svg path{
+    transition: fill 300ms ease;
+}
+a.active-link{
+    color: $hover;
+}
+a:hover, a, button, button:hover, .link, .link:hover{
+    transition: all 300ms ease;
+    text-decoration: none;
+    border: none;
+}
+
+body::-webkit-scrollbar {
+    width: 8px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: $header_body;        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: $primary_text;    /* color of the scroll thumb */
+  }
+
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+  .h1-title{
+    font-weight: bold;
+    @include adaptive-var("font-size", 30, 16, 1);
+    line-height: 46px;
+    letter-spacing: 0.05em;
+    color: #141414;
+  }
+
+  .h3-title{
+    font-weight: 600;
+    @include adaptive-var("font-size", 18, 12, 1);
+    line-height: 46px;
+    letter-spacing: 0.05em;
+    color: rgba(20, 20, 20, 0.58);
+  }
+
+  .center{
+      text-align: center;
+      justify-content: center;
+  }
+
+  
+
+  .desc{
+    font-weight: 500;
+    @include adaptive-var("font-size", 18, 12, 1);
+    line-height: 27px;
+    letter-spacing: 0.03em;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+.btn-close{
+    width: 2em;
+    height: 2em;
+    background: transparent;
+    border: none;
+    transform: scale(1);
+    transition: transform 300ms ease;
+    cursor: pointer;
+    & svg{
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 2em;
+        height: 2em;
+        display: inline-block;
+        fill: currentColor;
+        -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        font-size: 1.25rem;
+        
+    }
+}
+
+input, button, span, a, div{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.swiper-pagination-bullet-active{
+    background: $primary_text;
+}
+.slider-info{
+    & .swiper-slide.swiper-slide-active{
+        & .slider-info__animate{
+            animation-duration: 400ms;
+            animation-fill-mode: both;
+            animation-name: fadeInUp;
+            animation-delay: 100ms;
+        }
+    }
+}
+
+
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .fadeInUp {
+    animation-name: fadeInUp;
+  }
+
+ .swiper-products{
+    .swiper-button-next:after, .swiper-button-prev:after {
+      font-size: 18px;
+      color: $primary_text;
+    }
+  }
+
+.description{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #6A6A6A;
+  padding-bottom: 16px;
+}
+
+.loader-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.loader-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.loader-exit {
+  opacity: 1;
+}
+.loader-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+
+@import "./grid.scss";
+
+@import "../client/components/buttons/default/default.scss";
+@import "../client/components/container/container.styles.scss";
+@import "../client/components/inputs/checkbox/checkbox.scss";
+@import "../client/components/inputs/input-default/input-default.scss";
+@import "../client/components/inputs/textarea/textarea.scss";
+@import "../client/components/inputs/selsect/select.scss";
+@import "../client/components/modal/modal.scss";
+@import "../client/components/notification-bar/notification-bar.scss";
+@import "../client/components/pagination/pagination.scss";
+@import "../client/components/buttons/burger/burger.scss";
+@import "../client/components/slide-down/slide-down.scss";
+@import "../client/components/tabs/tabs.scss";
+@import "../client/components/rating/rating.scss";
+@import "../client/components/modal-cart/modal-cart.scss";
+@import "../client/components/favorite/favorite.scss";
+@import "../client//components/container-aside/container-aside.scss";
+@import "../client/components/aside/aside.scss";
+@import "../client/components/breadcrumbs/breadcrumbs.scss";
+@import "../client//components/inputs/range/range.scss";

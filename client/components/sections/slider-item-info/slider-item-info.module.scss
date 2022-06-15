@@ -1,0 +1,65 @@
+@import "../../../../styles/vars.scss";
+
+.item{
+    position: relative;
+    z-index: 3;
+    min-height: 384px;
+    @media screen and (min-width: 1500px) {
+        min-height: 584px;
+    }
+}
+.info{
+    max-width: 600px;
+    min-width: 300px;
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    @media screen and (min-width: 1280px) {
+        max-width: 600px;
+        right: 20px;
+        left: unset;
+        transform: translateX(0%);
+    }
+}
+
+.title{
+    display: inline;
+    font-weight: 500;
+    @include adaptive-var("font-size", 40, 32, 1);
+    line-height: 48px;
+    background-color: $primary_text;
+    color: #FFFFFF;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 300ms ease-in-out;
+}
+
+.link{
+    width: 123px;
+    margin-top: 20px; 
+}
+.preview{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.pagination{
+    width: 19px;
+    height: 19px;
+    border-radius: 20px;
+}
+
+.containerRelative{
+    position: relative;
+}

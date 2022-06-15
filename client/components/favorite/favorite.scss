@@ -1,0 +1,134 @@
+@import "../../styles/vars.scss";
+
+.favorite{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: $write;
+    z-index: 271;
+    top: 0px;
+    right: 0px;
+    @media screen and (min-width: 768px) {
+        width: 768px;
+    }
+    &__header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        // border-bottom:1px solid #ABABAB;
+    }
+    &__title{
+        @include adaptive-var("font-size", 20, 14, 1);
+    }
+    &__back{
+        cursor: pointer;
+        &-icon{
+            fill: $black;
+            width: 20px;
+            height: 20px;
+            transform: scale(1.5);
+        }
+    }
+    &__body{
+        position: relative;
+        height: 100%;
+    }
+    &__list{
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: calc(100% - 64px);
+        &::-webkit-scrollbar {
+            width: 6px;
+          }
+          
+        &::-webkit-scrollbar-track {
+            background: #141414;
+          }
+          
+        &::-webkit-scrollbar-thumb {
+            background-color: #E8AA31;
+        }
+        &-item{
+            padding: 20px;
+            border-bottom:1px solid #ABABAB;
+        }
+    }
+    &__empty{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: $write;
+        @include adaptive-var("font-size", 32, 14, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        transition: all 300ms ease;
+        z-index: -1;
+        visibility: hidden;
+        opacity: 0;
+        left: 0;
+        top: 0;
+        &.show{
+            z-index: 2;
+            visibility: visible;
+            opacity: 1;
+        }
+        &-preview-container{
+            position: relative;
+            width: 312px;
+            height: 312px;
+            margin-bottom: 10px;
+        }
+    }
+    &-fade{
+        &-enter {
+            opacity: 0;
+            transform: translateX(600px);
+        }
+        &-enter-active {
+            opacity: 1;
+            transform: translateX(0px);
+            transition: opacity 300ms, transform 300ms;
+        }
+        &-exit {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+        &-exit-active {
+            opacity: 0;
+            transform: translateX(600px);
+            transition: opacity 300ms, transform 300ms;
+        }
+    }
+
+}
+
+.favorite-overlay{
+    position: fixed;
+    z-index: 270;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: $black_opacity;
+
+    &-fade{
+        &-enter {
+            opacity: 0;
+        }
+        &-enter-active {
+            opacity: 1;
+            transition: opacity 300ms;
+        }
+        &-exit {
+            opacity: 1;
+        }
+        &-exit-active {
+            opacity: 0;
+            transition: opacity 300ms;
+        }
+    }
+
+}

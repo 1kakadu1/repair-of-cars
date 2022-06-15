@@ -1,0 +1,27 @@
+.products{
+    margin-top: 30px;
+    &Pagination{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    &Header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+    &Select{
+        max-width: 260px;
+    }
+    &Total{
+        padding-bottom: 30px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: #6A6A6A;
+    }
+    &Empty{
+        font-size: 24px;
+        padding-top: 60px;
+    }
+}

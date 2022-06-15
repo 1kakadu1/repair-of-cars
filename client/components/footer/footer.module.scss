@@ -1,0 +1,109 @@
+@import "../../../styles/vars.scss";
+
+.footer{
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+    position: relative;
+    border-top: 1px solid #E5E5E5;
+    &::before{
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-image: url(../../assets/images/footer-icon.png);
+        width: 96px;
+        height: 108px;
+        width: 124px;
+        height: 102px;
+        background-repeat: no-repeat;
+    }
+    &MenuHide{
+        display: none;
+        @media screen and (min-width: 1280px) {
+            display: block;
+        }
+    }
+    &MenuHideMobile{
+        display: none;
+        @media screen and (min-width: 768px) {
+            display: block;
+        }
+    }
+    &MenuRow{
+        display: flex;
+        justify-content: space-between;
+    }
+    &Menu{
+        max-width: 184px;
+        width: 100%;
+        margin-top: 56px;
+    }
+    &Info{
+        padding-top: 121px;
+        width: 100%;
+        @media screen and (min-width: 768px) {
+            max-width: 392px;
+        }
+    }
+    &Callback{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &Btn{
+            max-width: 272px;
+            width: 100%;
+        }
+    }
+    &Phone{
+        text-align: center;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 32px;
+        display: block;
+        color: $black;
+        padding-bottom: 16px;
+        &Title{
+            display: block;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 16px;
+            color: #6A6A6A;
+            padding-top: 6px;
+        }
+    }
+    &Socials{
+        padding-top: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        &Link{
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid $border_light;
+            border-radius: 2px;
+            &:hover{
+                background-color: $btn_default;
+                border: 1px solid $btn_default;
+                svg path{
+                    transition: all 300ms ease;
+                    fill: #fff;
+                }
+            }
+        }
+        &Title{
+            display: block;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 16px;
+            color: #6A6A6A;
+            padding-top: 32px;
+            text-align: center;
+        }
+    }
+}

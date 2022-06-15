@@ -1,0 +1,40 @@
+@import "../../../styles/vars.scss";
+
+.title{
+    color: $primary_text;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    padding-bottom: 7px;
+    &AdaptiveText{
+        @include adaptive-var("font-size", 16, 12, 1);
+    }
+}
+
+.container{
+    width: 100%;
+}
+
+.list{
+    padding-top: 7px;
+    flex-direction: column;
+}
+
+.listItem{
+    color: $black;
+    padding-bottom: 14px;
+}
+
+.listItemText{
+    color: $black;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    &AdaptiveText{
+        @include adaptive-var("font-size", 14, 10, 1);
+    }
+}
+
+a.listItemText:hover{
+    color: $primary_text;
+}

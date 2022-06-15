@@ -1,0 +1,65 @@
+@import "../../styles/vars.scss";
+
+.aside-general{
+   min-width: 246px;
+   width: 100%;
+}
+
+.aside-slide-down{
+   &__button, & .slide-dropdown__button{
+      padding: 13px 30px;
+      background-color: $black;
+      color: $write;
+      font-weight: 600;
+      font-size: 20px;
+
+   }
+   &_align-items-center{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   }
+   &__icon, & .slide-dropdown__icon{
+      fill: $write;
+   }
+   &__list{
+      padding: 13px 30px;
+   }
+}
+
+.aside-button-filter{
+   margin-top: 0px;
+}
+
+.aside{
+   &-filter{
+      &__rating-label{
+         display: flex;
+         align-items: center;
+         &  img {
+            margin-left: 10px;
+            width: 16px;
+            height: 16px;
+         }
+         & > span{
+            margin-left: 16px;
+            font-weight: 500;
+         } 
+      }
+   }
+}
+
+.btn-filter__cancel{
+   & svg{
+      font-size: 10px;
+      fill: white;
+   }
+
+}
+
+.btn-filter_hide{
+   margin-left: 20px;
+   @media screen and (min-width: 992px) {
+      display: none;
+   }
+}

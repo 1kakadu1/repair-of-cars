@@ -1,0 +1,31 @@
+@import "../../../styles/vars.scss";
+
+.pagination{
+    &-list{
+        display: flex;
+        align-items: center;
+    }
+    &-list__item{
+        margin: 0px 2px;
+    }
+    &__btn{
+        background-color: transparent;
+        width: 32px;
+        height: 40px;
+        padding: 4px;
+        border-radius: 4px;
+        cursor: pointer;
+        color: $black;
+        &:hover{
+            background-color: $hover;
+            color: $write;
+            svg{
+                fill: $write
+            }
+        }
+        &_active{
+            background-color: $hover;
+            color: $write
+        }
+    }
+}

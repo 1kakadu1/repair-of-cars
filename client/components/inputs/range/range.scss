@@ -1,0 +1,41 @@
+@import "../../../../styles/vars.scss";
+
+.range{
+    &__inputs{
+        display: flex;
+        justify-content: center;
+    }
+    &__input{
+        text-align: center;
+        padding: 0px;
+        &_radius-left{
+            border-radius: 2px 0px 0px 2px;
+        }
+        &_radius-right{
+            border-radius: 0px 2px 2px 0px;
+        }
+    }
+    &__slider{
+        & .rc-slider-rail{
+            background-color: $hover;
+        }
+        & .rc-slider-track{
+            background-color: $black;
+        }
+        & .rc-slider-handle {
+            width: 22px;
+            height: 22px;
+            margin-top: -10px;
+            background-color: $black;
+            border: solid 4px $hover;
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px $hover;
+            }
+        }
+        & .rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
+            border-color: $hover;
+            box-shadow: 0 0 0 5px $hover;
+          }
+    }
+}

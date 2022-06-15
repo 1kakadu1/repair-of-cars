@@ -1,0 +1,34 @@
+@import "../../../styles/vars.scss";
+
+.breadcrumbs{
+    display: flex;
+    align-items: center;
+    &__separator{
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 8px;
+        height: 12px;
+        transform: scale(0.5);
+        @media screen and (min-width: 992px) {
+            transform: scale(1);
+        }
+    }
+    &__item{
+        display: flex;
+        align-items: center;
+        @include adaptive-var("font-size", 16, 10, 1);
+    }
+    &__link{
+        color: $black_light;
+        @include adaptive-var("font-size", 16, 10, 1);
+        &:hover{
+            color: $hover;
+        }
+    }
+    &_link-disable{
+        color: $hover;
+        &:hover{
+            color: $hover;
+        }
+    }
+}

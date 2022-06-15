@@ -1,0 +1,15 @@
+@import "../../styles/vars.scss";
+
+.divider{
+    width: 100%;
+    border-top: 1px solid $divider;
+}
+
+$list: 0,5,10,15,20,25,30,35;
+
+@each $size in $list {
+    .dividerPaddingTopBottom#{$size} {
+        margin-top: #{$size} + px;
+        margin-bottom: #{$size} + px;
+      }
+  }

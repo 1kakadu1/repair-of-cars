@@ -1,0 +1,57 @@
+@import "../../../../styles/vars.scss";
+
+.btn-default{
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    background-color: $btn_default;
+    min-height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    border: 1px solid $btn_default;
+    &:hover{
+        background-color: $btn_default_outline;
+        border: 1px solid $border_light;
+        & .btn-default__content{
+            color: $btn_default;
+            transition: color 300ms ease;
+        }
+    }
+    &__content{
+        color: $write;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 300ms ease;
+    }
+    &.btn-default_outline{
+        background-color: $btn_default_outline;
+        border: 1px solid $border_light;
+        &:hover{
+            background-color: $btn_default;
+            border: 1px solid $btn_default;
+            & .btn-default__content{
+                color: $write;
+                transition: color 300ms ease;
+            }
+        } 
+        .btn-default__content{
+            color: $btn_default;
+        }
+    }
+}
+
+.btn-default:disabled,
+.btn-default[disabled]{
+  border: 1px solid #cccccc;
+  background-color: #cccccc;
+  color: $write;
+  & .btn-default__content{
+    color: $write;
+    }
+}

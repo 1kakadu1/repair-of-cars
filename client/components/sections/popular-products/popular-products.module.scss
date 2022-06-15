@@ -1,0 +1,22 @@
+.popular{
+    &RowMgTop{
+        margin-top: 4px;
+        row-gap: 24px;
+    }
+
+    &ContainerRow{
+        width: 100%;
+    }
+
+    &BtnAll{
+        margin: 16px auto;
+        max-width: 200px;
+    }
+}
+
+.sectionProductsSwiper{
+    
+    @media screen and (min-width: 1280px) {
+        padding-right: 70px;
+    }
+}

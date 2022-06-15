@@ -1,0 +1,239 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model CarModel {
+  id        Int          @id @default(autoincrement())
+  name      String
+  updatedAt     DateTime @updatedAt
+  createdAt     DateTime    @default(now())
+  Product   Product[]
+}
+
+model Seasons {
+  id        Int          @id @default(autoincrement())
+  name      String
+  updatedAt     DateTime @updatedAt
+  createdAt     DateTime    @default(now())
+  Product   Product[]
+}
+
+model Conditions {
+  id        Int          @id @default(autoincrement())
+  name      String
+  updatedAt     DateTime @updatedAt
+  createdAt     DateTime    @default(now())
+  Product   Product[]
+}
+
+model Manufacturers {
+  id        Int          @id @default(autoincrement())
+  name      String
+  updatedAt     DateTime @updatedAt
+  createdAt     DateTime    @default(now())
+  Product   Product[]
+}
+
+model SpeedIndex {
+  id        Int          @id @default(autoincrement())
+  name      String
+  updatedAt     DateTime? @updatedAt
+  createdAt     DateTime?    @default(now())
+  Product   Product[]
+}
+
+model FuelEfficiency {
+  id        Int          @id @default(autoincrement())
+  name      String
+  updatedAt     DateTime?    @updatedAt
+  createdAt     DateTime?    @default(now())
+  Product   Product[]
+}
+
+model GripSurfaces {
+  id            Int          @id @default(autoincrement())
+  name          String
+  updatedAt     DateTime?   @updatedAt
+  createdAt     DateTime?   @default(now())
+  Product       Product[]
+}
+
+
+
+model Category{
+    id            String    @id @default(cuid())
+    name          String
+    slug          String
+    preview       String    @default("")
+    description   String    @default("")
+    isProduct     Boolean   @default(false)
+    isServices    Boolean   @default(false)
+    product       ProductCategory[]
+    services      ServicesCategory[]
+    news          NewsCategory[]
+    published     Boolean   @default(false)
+    updatedAt     DateTime?  @updatedAt
+    createdAt     DateTime?  @default(now())
+    @@unique([name, slug])
+}
+
+
+model User{
+  id          String        @id @default(cuid())
+  email       String
+  password    String
+  avatar      String        @default("")
+  comment     Comments[]
+  commentNews CommentsNews[]
+  isAdmin     Boolean       @default(false)
+  posts       Product[]
+  services    Services[]
+  news        News[]
+  orders       Orders[]
+  updatedAt   DateTime?    @updatedAt
+  createdAt   DateTime?    @default(now())
+}
+
+model Comments{
+  id          String      @id @default(cuid())
+  user        User        @relation(fields: [userId], references: [id])
+  userId      String
+  comment     String
+  createdAt   DateTime?   @default(now())
+  updatedAt   DateTime?   @updatedAt
+  product     Product     @relation(fields: [productId], references: [id])
+  productId   String
+
+  @@unique([userId,productId], map: "user_id_post_id_unique")
+}
+
+model CommentsNews{
+  id          String      @id @default(cuid())
+  user        User        @relation(fields: [userId], references: [id])
+  userId      String
+  comment     String
+  createdAt   DateTime?    @default(now())
+  updatedAt   DateTime? @updatedAt
+  news News     @relation(fields: [newsId], references: [id])
+  newsId   String
+
+  @@unique([userId,newsId], map: "user_id_newsId_unique")
+}
+
+model ProductCategory { 
+  category           Category      @relation(fields: [categoryId], references: [id])
+  categoryId         String 
+  product            Product        @relation(fields: [productId], references: [id])
+  productId          String 
+  @@id([categoryId, productId]) 
+}
+
+model ServicesCategory { 
+  category           Category            @relation(fields: [categoryId], references: [id])
+  categoryId         String 
+  service            Services     @relation(fields: [serviceId], references: [id])
+  serviceId          String
+  @@id([categoryId, serviceId]) 
+}
+
+model NewsCategory { 
+  category        Category @relation(fields: [categoryId], references: [id])
+  categoryId      String 
+  news            News     @relation(fields: [newsId], references: [id])
+  newsId          String
+  @@id([categoryId, newsId]) 
+}
+
+
+model Product {
+  id                  String         @id @default(cuid())
+  code                Int               
+  name                String
+  width               Int
+  modelCar            CarModel       @relation(fields: [modeCarlId], references: [id])
+  modeCarlId          Int            @default(1)
+  userId              String
+  users               User           @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  quantity            Int
+  price               Float
+  rating              Float          @default(0)
+  comments            Comments[]
+  categories          ProductCategory[]
+  season              Seasons        @relation(fields: [seasonId], references: [id]) 
+  manufacturers       Manufacturers  @relation(fields: [manufacturersId], references: [id])
+  condition           Conditions     @relation(fields: [conditionId], references: [id]) 
+  speedIndex          SpeedIndex     @relation(fields: [speedIndexId], references: [id])
+  fuelEfficiency      FuelEfficiency @relation(fields: [fuelEfficiencyId], references: [id]) 
+  gripSurfaces        GripSurfaces   @relation(fields: [gripSurfacesId], references: [id])
+  conditionId         Int            @default(1)
+  seasonId            Int            @default(1)
+  manufacturersId     Int            @default(1)
+  speedIndexId        Int            @default(1)
+  fuelEfficiencyId    Int            @default(1)
+  gripSurfacesId      Int            @default(1)
+  createdAt           DateTime?       @default(now())
+  updatedAt           DateTime?       @updatedAt
+  published           Boolean        @default(false)
+  preview             String         @default("")
+  slug                String
+  description         String          @default("")
+  loadIndex           Int             @default(0)
+  externalNoiseLevel  Int             @default(0)
+  completeSet         Boolean         @default(false)
+  isStock             Boolean         @default(false)
+  @@unique([id, name, code])
+}
+
+model Services{
+    id            String    @id @default(cuid())
+    title         String
+    description   String    @default("")
+    preview       String    @default("")
+    previewFull   String    @default("")
+    createdAt     DateTime?  @default(now())
+    updatedAt     DateTime? @updatedAt
+    published     Boolean   @default(false)
+    userId        String
+    users         User      @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    categories    ServicesCategory[]
+    price         Float     @default(0)
+    workDesc      String    @default("Работаем с 9.00 - 20.00 без выходных")
+    slug          String
+    @@unique([id, title])
+}
+
+model News{
+    id            String    @id @default(cuid())
+    title         String
+    description   String    @default("")
+    preview       String    @default("")
+    previewFull   String    @default("")
+    createdAt     DateTime?  @default(now())
+    updatedAt     DateTime? @updatedAt
+    published     Boolean   @default(false)
+    isStock       Boolean   @default(false)
+    userId        String
+    users         User      @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    categories    NewsCategory[]
+    slug          String
+    comments      CommentsNews[]
+    validUntil    DateTime?
+    tags          String?
+    @@unique([id, title])
+}
+
+model Orders{
+    id            String    @id @default(cuid())
+    userId        String?
+    users         User?      @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    email         String
+    phone         String
+    address       String
+    products      String 
+    @@unique([id])
+}

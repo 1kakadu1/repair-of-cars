@@ -1,0 +1,18 @@
+.popular{
+    &ItemHide{
+        @media (min-width: 768px) and (max-width: 992px) { 
+            display: none;
+        }
+    }
+}
+.cards{
+    //margin-bottom: 32px;
+    &More{
+        padding-top: 32px;
+    }
+    &MoreBtn{
+            
+            max-width: 204px;
+            margin: 0 auto;
+    }
+}
