@@ -91,7 +91,9 @@ export const ModalCallback = ({onSend: onSendProps, open, onToggleOpen}:IModalCa
                             onChangeValue(e.target.value.toString(), 'phone')
                         }
                     >
-                        {(inputProps: any) => (
+                        {
+                        //@ts-ignore
+                        (inputProps: any) => (
                             <InputDefault
                                 id="phone"
                                 label="Ваш номер"
