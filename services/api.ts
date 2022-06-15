@@ -2,7 +2,7 @@ import axios, { Method, AxiosRequestConfig } from 'axios';
 import { IResponse } from '../@types';
 import { createSearch } from '../client/utils/href.utils';
 
-export const API_PREFIX = process.env.API_HOST || 'http://localhost:3000/api';
+export const API_PREFIX = 'https://repair-of-cars.vercel.app/';//process.env.API_HOST || 'http://localhost:3000/api';
 export const TOKEN_NAME = 'jwt-token';
 export const USER = 'user';
 
