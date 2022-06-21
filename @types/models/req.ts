@@ -44,13 +44,23 @@ export interface ICategoryReqData{
 }
 
 export interface IProductReqData{
-    products:  IProductData[]
+    products:  IProductData | IProductData[]
     meta?:{
         title: string;
     }
-    options: ReqOptions;
-    total: number;
+    options?: ReqOptions;
+    total?: number;
 }
+
+export interface IProductSimilarReqData{
+    products: IProductData[]
+}
+
+export interface IProductSimilarReqBody{
+    options?: ReqOptions;
+    product: IProductData;
+}
+
 
 export interface IHomeReqData{
     products:{

@@ -14,7 +14,7 @@ const Favorite = ({
 	favorites,
 	className = '',
 }: IFavoriteProps) => {
-		const {onRemove} = useFavorite();
+		const {onRemove, onToggleWindowFavorite} = useFavorite();
 
 	return (
 		<CSSTransition
@@ -37,7 +37,8 @@ const Favorite = ({
 								<CardCart 
 									data={item}
 									onRemoveItem={onRemove}
-									href={"/products/"+item.slug}
+									onClose={()=>{onToggleWindowFavorite(false)}}
+									href={"/product/"+item.slug}
 								/>
 							</div>
 						))}

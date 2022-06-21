@@ -1,3 +1,117 @@
+@import "../../styles/vars.scss";
+
 .page{
     padding-top: 20px;
+    &Description{
+        &>h3{
+            font-weight: 700;
+            @include adaptive-var("font-size", 24, 18, 1);
+            padding-bottom: 14px;
+            line-height: 26px;
+        }
+
+        &>h4{
+            font-weight: 700;
+            @include adaptive-var("font-size", 18, 12, 1);
+            padding-bottom: 14px;
+            line-height: 26px;
+        }
+
+        &>p{
+            font-weight: 400;
+            @include adaptive-var("font-size", 16, 12, 1);
+            color: #6A6A6A;
+            padding-bottom: 18px;
+            text-align: justify;
+            @include adaptive-var("line-height", 24, 18, 1);
+            @media screen and (min-width: 768px) {
+                display: flex;
+                align-items: flex-start;
+            }
+            & span{
+              display: block;
+              @media screen and (min-width: 768px) {
+                width: 50%;
+                padding-right: 20px;
+              }  
+            }
+        }
+    }
+    &Header{
+        padding: 0;
+    }
+    &HeaderBottom{
+        color: #6A6A6A;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        flex-wrap: wrap;
+        @media (min-width: 768px){
+            flex-wrap: nowrap;
+            gap: 0px;
+        }
+    }
+    &HeaderIcons{
+        
+        display: flex;
+        align-items: center;
+        width: 48%;
+        @media (min-width: 768px){
+            padding-right: 18px;
+            width: auto;
+        }
+    }
+    &FieldCode{
+        
+        font-weight: 400;
+        font-size: 12px;
+        width: 48%;
+        @media (min-width: 540px){
+            font-size: 14px;
+        }
+        @media (min-width: 768px){
+            width: auto;
+            padding-right: 18px;
+        }
+    }
+    &Body{
+        margin-top: 48px;
+        &Preview{
+            border: 1px solid $divider_light;
+            min-height: 392px;
+            position: relative;
+        }
+        &Info{
+
+        }
+        &Cart{
+
+        }
+    }
+
+    &Tabs{
+
+    }
+}
+
+
+.cardProductHeaderComments{
+    display: flex;
+    align-items: center;
+    width: 48%;
+    @media (min-width: 768px){
+        width: auto;
+        padding-right: 18px;
+    }
+}
+.cardProductHeaderCommentsCount{
+    padding-left: 10px;
+}
+.cardProductHeaderStars{
+    padding-right: 18px;
+    width: 48%;
+    @media (min-width: 768px){
+        width: auto;
+    }
 }

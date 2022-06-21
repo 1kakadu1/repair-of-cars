@@ -37,8 +37,7 @@ export const Breadcrumbs = ({
 					return (
 						<div key={item.href} className="breadcrumbs__item">
 							<Link href={item.href}>
-								<a className={'breadcrumbs__link'}></a>
-								{item.name}
+								<a className={'breadcrumbs__link'}>{item.name}</a>
 							</Link>
 							<div className="breadcrumbs__separator">
 								<svg

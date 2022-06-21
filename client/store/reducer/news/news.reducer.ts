@@ -49,7 +49,8 @@ export const newsSlice = createSlice({
 		options: {
 			limit: 0,
 			offset: 0,
-		}
+		},
+		isHydrate: false,
 		
     },
 	reducers: {
@@ -60,10 +61,14 @@ export const newsSlice = createSlice({
 	},
 	extraReducers: {
         [HYDRATE]: (state, action) => {
-            return {
-                ...state,
-				...action.payload.news
-            };
+			if(!state.isHydrate){
+				return {
+					...state,
+					...action.payload.news,
+					isHydrate: true
+				};
+			}
+
         },
     }
 });

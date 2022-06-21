@@ -4,10 +4,9 @@ import { ListItems } from "../list-items/list-items.component";
 import { menuMock } from "../menu/menu.mock";
 import { phones } from "../../const/setting";
 import { ButtonDefault } from "../buttons/default/default.component";
-import { Modal } from "../modal/modal.component";
-import { InputDefault } from "../inputs/input-default/input-default.component";
 import { ModalCallback } from "../modals/modal-callback/modal-callback.component";
 import { useState } from "react";
+import { RoutsPath } from "../../../@types";
 
 const initForm = {
 	phone: {
@@ -24,7 +23,7 @@ const initForm = {
 
 export const Footer = ()=>{
     const [open, setOpen] = useState<boolean>(false);
-
+    
     return(
         <section className={styles.footer} >
             <Container>
@@ -32,13 +31,13 @@ export const Footer = ()=>{
                     <div className={styles.footerMenu + " " + styles.footerMenuHideMobile}>
                         <ListItems
                             title="Товары"
-                            items={menuMock[0]?.subMenu?.map(item=>({name: item.name, href: item.href})) || []}
+                            items={menuMock[0]?.subMenu?.map(item=>({name: item.name, href: RoutsPath.products+item.href})) || []}
                         />
                     </div>
                     <div className={styles.footerMenu + " " + styles.footerMenuHide}>
                         <ListItems
                             title="Услуги"
-                            items={menuMock[1]?.subMenu?.map(item=>({name: item.name, href: item.href})) || []}
+                            items={menuMock[1]?.subMenu?.map(item=>({name: item.name, href: RoutsPath.services.toString+item.href,})) || []}
                         />
                     </div>
 

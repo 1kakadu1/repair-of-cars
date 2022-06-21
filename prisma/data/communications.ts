@@ -1,15 +1,15 @@
 const catRefServices = [
     {
       servicesId: "services-1",
-      categoryId: "category-service"
+      categoryId: "category-service-tire"
     },
     {
       servicesId: "services-2",
-      categoryId: "category-service"
+      categoryId: "category-service-disk"
     },
     {
       servicesId: "services-3",
-      categoryId: "category-service"
+      categoryId: "category-service-tire"
     }
   ];
 

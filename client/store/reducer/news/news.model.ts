@@ -6,7 +6,8 @@ export interface INewsState {
 	news: INewsData[];
 	filter: INewsFilter;
 	options: ReqOptions,
-	total: number
+	total: number;
+	
 
 }
 

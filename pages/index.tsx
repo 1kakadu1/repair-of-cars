@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { IHomeReqData, RoutsPath } from '../@types'
 import { Container } from '../client/components/container/container.component'
 import { Footer } from '../client/components/footer/footer'
@@ -11,18 +11,23 @@ import { SectionSliderInfo } from '../client/components/sections/slider-item-inf
 import { TextInfo } from '../client/components/sections/text-info/text-info.component'
 import { useTypedSelector } from '../client/hooks/useTypedSelector'
 import { IHomeState } from '../client/store/reducer/home/home.model'
-import { toHomeAction } from '../client/store/reducer/home/home.reducer'
+import { fetchHome } from '../client/store/reducer/home/home.reducer'
 import { wrapper } from '../client/store/state'
 import { createTabsDataPopularProduct } from '../client/utils/popular.utils'
-import { apiService } from '../services/api'
 import { intPropsServices } from '../services/init-props'
 
 const Home: NextPage = (props) => {
 
-  const {services, products, news ,error, isLoading} = useTypedSelector<IHomeState>(state=>state.home);
+  const {services, products, news ,error, isLoading, isHydrate} = useTypedSelector<IHomeState>(state=>state.home);
   const popular = useMemo(()=>{
     return createTabsDataPopularProduct(products.popular, ["category-tire"]);
   },[products]);
+
+  useEffect(()=>{
+    if(products.all.length === 0){
+      fetchHome({});
+    }
+  }, []);
 
   return (
     <div>
@@ -58,14 +63,14 @@ const Home: NextPage = (props) => {
       <SectionProducts
         title='Популярные шины'
         products={popular.tabs}
-        tabsLabel={popular.labels.map(({label, slug}, index)=>({id: index, label, slug}))}
+        tabsLabel={popular.labels.map(({label, slug, id}, index)=>({id: index, label, slug, sectionId: id }))}
       />
 
       <SectionProducts
         title='Новое асортупление'
         products={products.all}
         link={{
-          href: RoutsPath.products + "/1",
+          href: RoutsPath.products + "/1"+`?category={"category-tire":"tires"}`,
           title: "Смотреть все"
         }}
         swiperProps={{

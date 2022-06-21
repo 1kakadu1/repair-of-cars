@@ -151,7 +151,7 @@ export const AsideProduct = ({
 					className="aside-slide-down"
 				>
 						<div className="aside-slide-down__list checkbox-list">
-							{category.map((item) => (
+							{category.filter(x=> x.isProduct === true).map((item) => (
 								<div className="checkbox-list__item" key={item.id}>
 									<Checkbox
 										id={item.id}

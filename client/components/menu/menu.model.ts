@@ -15,6 +15,7 @@ export interface IMenuItem{
     href: string;
     name: string;
     subMenu?: IMenuSubItem[];
+    order?: number;
 }
 
 export interface IMenuSubItem{

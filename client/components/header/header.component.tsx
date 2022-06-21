@@ -1,18 +1,45 @@
+import { useMemo } from "react";
+import { ICategoryData, RoutsPath } from "../../../@types";
 import { useCart } from "../../hooks/useCart";
 import { useFavorite } from "../../hooks/useFavorite";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { Container } from "../container/container.component";
 import { ArrowMenuIcon } from "../icons/arrow-down.icon";
 import { CartIcon } from "../icons/cart.icon";
 import { HeartIcon } from "../icons/heart.icon";
-import { LogoIcon } from "../icons/logo.icon";
-import { SearchIcon } from "../icons/search.icon";
+import { LogoIcon } from "../icons/logo.icon";;
 import { Menu } from "../menu/menu.component";
 import { menuMock, mobileMenu } from "../menu/menu.mock";
 import styles from "./header.module.scss";
 
 export const Header = () =>{
     const {width} = useWindowSize();
+    const {category} = useTypedSelector(state=>state.category);
+
+    const menuCatProducts = useMemo(()=>{
+        return category.filter((x: ICategoryData)=> x.isProduct === true).map((item: ICategoryData)=>({
+            href: "/1"+`?category={"${item.id}":"${item.slug}"}`,
+            name: item.name,
+            preview: item.preview,
+            parentHref: RoutsPath.products,
+            description: item.description,
+        })) 
+    }, [category]);
+
+    const menuCatServices = useMemo(()=>{
+        return category.filter((x: ICategoryData)=> x.isServices === true).map((item: ICategoryData)=>({
+            href: "/1"+`?category={"${item.id}":"${item.slug}"}`,
+            name: item.name,
+            preview: item.preview,
+            parentHref: RoutsPath.services,
+            description: item.description,
+        })) 
+    }, [category]);
+
+    menuMock[0].subMenu = menuCatProducts;
+    menuMock[1].subMenu = menuCatServices;
+
     const menuLinks = width >= 1280 ? menuMock : [...menuMock,...mobileMenu];
     const {onToggleCart} = useCart();
     const {onToggleWindowFavorite} = useFavorite();

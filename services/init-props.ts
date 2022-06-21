@@ -1,6 +1,7 @@
 import { ICategoryReqData, IHomeReqData, IProductReqData } from "../@types";
 import { toCategoryAction } from "../client/store/reducer/category/category.reducer";
 import { toHomeAction } from "../client/store/reducer/home/home.reducer";
+import { toProductAction } from "../client/store/reducer/product/product.reducer";
 import { toProductsAction } from "../client/store/reducer/products/products.reducer";
 import { AppStore } from "../client/store/state";
 import { apiService } from "./api";
@@ -46,6 +47,29 @@ class InitialPropsServices {
             console.error("Req error "+ error.message.toString())
         }
     }
+
+    async getProduct(store: AppStore,query: {[key: string]: any,}){
+      const state = store.getState().product;
+      try {
+          if(query["slug"] === undefined || query["slug"] === null || query["slug"] === "" || typeof query["slug"] !== "string"){
+            throw Error("404. Not found product")
+          }
+          
+
+          const {data, error} = await apiService.get<IProductReqData>(
+              `products/${query["slug"]}`);
+
+          if(!state.isHydrate){
+              if(data){
+                  store.dispatch(toProductAction.setProduct(data));
+                }else if(error){
+                  store.dispatch(toProductAction.productsRequestFailed(error));
+                }
+          }
+      } catch (error: any) {
+          store.dispatch(toProductAction.productsRequestFailed( error.message.toString()));
+      }
+  }
 
     async getHome(store: AppStore){
         const state = store.getState().home;

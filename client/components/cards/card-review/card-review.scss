@@ -1,0 +1,72 @@
+@import "../../../../styles/vars.scss";
+
+.card-review{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 20px;
+    @media screen and (min-width: 540px) {
+        align-items: flex-start;
+        flex-direction: row;
+    }
+    &-avatar{
+        margin-right: 15px;
+        position: relative;
+        width: 80px;
+        height: 80px;
+        display: block;
+        min-width: 80px;
+        &>span{
+            border-radius: 80px;
+        }
+    }
+    &-info{
+        margin-left: 15px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    &-info-header{
+        display: flex;
+        width: 100%;
+        padding-bottom: 10px;
+        flex-direction: column;
+        flex-wrap: wrap;
+        @media screen and (min-width: 540px) {
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+        &__name{
+            display: flex;
+            flex-grow: 1;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            font-weight: bold;
+            line-height: 22px;
+            color: $black;
+            padding-bottom: 12px;
+            @include adaptive-var("font-size", 18, 14, 1);
+            @media screen and (min-width: 540px) {
+                padding-bottom: 0px;
+            }
+        }
+        &__date{
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 17px;
+            color: rgba(20, 20, 20, 0.3);
+        }
+    }
+    &__stars{
+        padding-bottom: 20px;
+    }
+    &__comment{
+        font-weight: 500;
+        line-height: 27px;
+        font-size: 14px;
+        color: #6A6A6A;
+    }
+}

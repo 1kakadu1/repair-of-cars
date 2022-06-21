@@ -3,6 +3,7 @@ import { categorySlice } from './reducer/category/category.reducer';
 import { favoriteSlice } from './reducer/favorite/favorite.reducer';
 import { homeSlice } from './reducer/home/home.reducer';
 import { newsSlice } from './reducer/news/news.reducer';
+import { productSlice } from './reducer/product/product.reducer';
 import { productsSlice } from './reducer/products/products.reducer';
 import { servicesSlice } from './reducer/services/services.reducer';
 
@@ -14,6 +15,7 @@ export const slices = {
 	[cartSlice.name]: cartSlice.reducer,
 	[favoriteSlice.name]: favoriteSlice.reducer,
 	[categorySlice.name]: categorySlice.reducer,
+	[productSlice.name]: productSlice.reducer
 };
 
 export const sliceActions = {
@@ -23,5 +25,6 @@ export const sliceActions = {
 	...newsSlice.actions,
 	...cartSlice.actions,
 	...favoriteSlice.actions,
-	...categorySlice.actions
+	...categorySlice.actions,
+	...productSlice.actions,
 }

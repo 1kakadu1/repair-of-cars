@@ -1,6 +1,7 @@
 import { PrismaClient, Prisma, ServicesCategory} from '@prisma/client'
 import { communications, IChangesData } from './data/communications';
 import { dictionaries } from './data/dictionaries';
+import { mockProductDescription } from './data/mock';
 
 const prisma = new PrismaClient();
 
@@ -8,39 +9,64 @@ const prisma = new PrismaClient();
 
 const categoriesData: Prisma.CategoryCreateInput[] = [
   {
-    id: "category-service",
+    id: "category-service-tire",
     name: "Шиномонтаж",
     slug: "cat-tire-service",
+    preview: "/img/menu/4.png",
     isServices: true,
+    description: "Ежедневно с 9:00 до 21:00, без перерывов",
+    published: true,
+  },
+  {
+    id: "category-service-disk",
+    name: "Ремонт и правка дисков",
+    slug: "cat-disk-service",
+    preview: "/img/menu/5.png",
+    isServices: true,
+    description: "Ежедневно с 9:00 до 21:00, без перерывов",
+    published: true,
   },
   {
     id: "category-tire",
     name: "Шины",
     slug: "tires",
+    preview: "/img/menu/5.png",
     isProduct: true,
+    description: "Все виды шин",
+    published: true,
   },
   {
     id: "category-automotive",
     name: "Автомобильные",
     slug: "tires-automotive",
     isProduct: true,
+    preview: "/img/menu/1.png",
+    description: "Летние Зимние Шипованые Фрикционные Б/у. R13 R14 R15 R16 R17 R18 R19 R20",
+    published: true,
   },
   {
     id: "category-cargo",
     name: "Грузовые",
     slug: "tires-cargo",
     isProduct: true,
+    preview: "/img/menu/2.png",
+    description: "Ведущие Универсальные Рулевые Прицеп Рулевые + прицеп. R22,5 R24 R21 R20 R19,5 R18 R19 R20",
+    published: true,
   },
   {
     id: "category-motorcycle",
     name: "Мотошины",
     slug: "tires-motorcycle",
     isProduct: true,
+    preview: "/img/menu/3.png",
+    description: "Спорт Спорт-турист Чоппер/круйзер Эндуро Классика. R12 R13 R14 R15",
+    published: true,
   },
   {
     id: "category-news",
     name: "Новости",
-    slug: "news"
+    slug: "news",
+    published: true,
   }
 
 ];
@@ -65,6 +91,7 @@ const productData: Prisma.ProductCreateInput[] = [
     rating: 4,
     published: true,
     code: 32342324,
+    description: mockProductDescription({name: "Cordiant Sport 3 PS2 215/65 R16 102V"}),
     comments: {
         create: 
             [
@@ -72,10 +99,11 @@ const productData: Prisma.ProductCreateInput[] = [
                     user: {
                         create: {
                             email: "test@mail.ru",
-                            password: "123345"
+                            password: "123345",
+                            name: "Bob Smit"
                         }
                     },
-                    comment: "Test msg",
+                    comment: `Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов.Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов.`,
                 }
             ]
     },
@@ -98,6 +126,7 @@ const productData: Prisma.ProductCreateInput[] = [
     rating: 4,
     published: true,
     code: 22342324,
+    description: mockProductDescription({name: "Cordiant Snow Cross 2"}),
     users:{
       create:  {
         email:       "del@del.ru",
@@ -118,6 +147,7 @@ const productData: Prisma.ProductCreateInput[] = [
     published: true,
     code: 12342324,
     completeSet: true,
+    description: mockProductDescription({name: "Pirelli PZero"}),
     users:{
       create:  {
         email:       "del@del.ru",
@@ -137,6 +167,7 @@ const productData: Prisma.ProductCreateInput[] = [
     rating: 5,
     published: true,
     code: 32342321,
+    description: mockProductDescription({name: "Goodyear Vector 4Seasons SUV Gen-2"}),
     comments: {
         create: 
             [
@@ -144,7 +175,8 @@ const productData: Prisma.ProductCreateInput[] = [
                     user: {
                         create: {
                             email: "user@mail.ru",
-                            password: "2345678"
+                            password: "2345678",
+                            name: "Wolf Man"
                         }
                     },
                     comment: `Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов.`,
@@ -153,7 +185,8 @@ const productData: Prisma.ProductCreateInput[] = [
                   user: {
                       create: {
                           email: "user-2@mail.ru",
-                          password: "2345678"
+                          password: "2345678",
+                          name: "Tral"
                       }
                   },
                   comment: `Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне`,
@@ -181,6 +214,7 @@ const productData: Prisma.ProductCreateInput[] = [
     code: 13342324,
     completeSet: false,
     loadIndex: 42,
+    description: mockProductDescription({name: "Петрошина Л-362 90/90 -10 42J TT"}),
     users:{
       create:  {
         email:       "del@del.ru",
@@ -202,6 +236,7 @@ const productData: Prisma.ProductCreateInput[] = [
     code: 13342344,
     completeSet: false,
     loadIndex: 139,
+    description: mockProductDescription({name: "НШЗ NR201 R19.5 245/70 136/134M TL"}),
     users:{
       create:  {
         email:       "del@del.ru",
@@ -222,6 +257,7 @@ const productData: Prisma.ProductCreateInput[] = [
     rating: 4,
     published: true,
     code: 82236774,
+    description: mockProductDescription({name: "Cordiant Sport 3 PS2 102V"}),
     users:{
       create:  {
         email:       "del@del.ru",
@@ -241,6 +277,7 @@ const productData: Prisma.ProductCreateInput[] = [
     rating: 4,
     published: true,
     code: 91576241,
+    description: mockProductDescription({name: "Cordiant Snow Cross 8"}),
     users:{
       create:  {
         email:       "del@del.ru",
@@ -261,6 +298,7 @@ const productData: Prisma.ProductCreateInput[] = [
     published: true,
     code: 12342324,
     completeSet: true,
+    description: mockProductDescription({name: "Pirelli PZero F1"}),
     users:{
       create:  {
         email:       "del@del.ru",
@@ -280,6 +318,7 @@ const productData: Prisma.ProductCreateInput[] = [
     rating: 5,
     published: true,
     code: 999348,
+    description: mockProductDescription({name: "Goodyear Vector 4Seasons SUV Gen-4"}),
     users:{
       create:  {
         email:       "del@del.ru",
@@ -301,6 +340,7 @@ const productData: Prisma.ProductCreateInput[] = [
     code: 85087265,
     completeSet: false,
     loadIndex: 42,
+    description: mockProductDescription({name: "Петрошина Л-368 80/80 -10 42J TT"}),
     users:{
       create:  {
         email:       "del@del.ru",
@@ -322,6 +362,7 @@ const productData: Prisma.ProductCreateInput[] = [
     code: 357764,
     completeSet: true,
     loadIndex: 139,
+    description: mockProductDescription({name: "НШЗ NR201 TL"}),
     users:{
       create:  {
         email:       "del@del.ru",
@@ -343,6 +384,7 @@ const productData: Prisma.ProductCreateInput[] = [
     code: 2257764,
     completeSet: true,
     loadIndex: 139,
+    description: mockProductDescription({name: "НШЗ NR211 TL"}),
     users:{
       create:  {
         email:       "del@del.ru",
@@ -364,6 +406,7 @@ const productData: Prisma.ProductCreateInput[] = [
     code: 77087265,
     completeSet: false,
     loadIndex: 42,
+    description: mockProductDescription({name: "Петрошина Л-368 80/80 -10 42J TJ"}),
     users:{
       create:  {
         email:       "del@del.ru",
@@ -394,7 +437,7 @@ const servicesData: Prisma.ServicesCreateInput[] =[
   },
   {
     id: "services-2",
-    title: "Шиномонтаж",
+    title: "Ремонт и правка дисков",
     preview: "/img/services/s2-small.png",
     published: true,
     users: {      

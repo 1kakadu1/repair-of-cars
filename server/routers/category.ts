@@ -18,8 +18,8 @@ export const category = async (
           const catList = await catService.getList(
             {
               where: {
-                isProduct: true,
-                //published: true
+                //isProduct: true,
+                published: true
               },
               select:{
                 id: true,
@@ -27,6 +27,8 @@ export const category = async (
                 name: true,
                 preview: true,
                 description: true,
+                isProduct: true,
+                isServices: true
               }
             },
             {

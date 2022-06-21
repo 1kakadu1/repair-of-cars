@@ -1,6 +1,15 @@
 Test site for tire repair
 
-## Getting Started
+## Getting Started develop
+Add .env.local
+```
+DATABASE_URL="file:./dev.db"
+DATABASE_TYPE="sqlite"
+API_HOST=http://localhost:3000/api
+
+```
+Change prisma/schema.prisma field:  provider = "sqlite"
+
 Install dependencies
 ```bash
 npm install
@@ -23,6 +32,32 @@ First, run the development server:
 npm run dev
 # or
 yarn dev
+```
+
+## Getting Started postgresql
+
+Add .env.local
+```
+DATABASE_URL=postgresql://postgres:....
+DATABASE_TYPE="postgresql"
+API_HOST=http://localhost:3000/api
+
+```
+
+Install dotenv
+```
+npm install -g dotenv-cli
+
+```
+Start migrate
+```
+dotenv -e .env.local -- npx prisma migrate dev --name init
+
+```
+Create data in table
+```
+dotenv -e .env.local -- npx prisma db seed
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

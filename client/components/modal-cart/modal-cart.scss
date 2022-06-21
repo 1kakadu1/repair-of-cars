@@ -22,7 +22,7 @@
         height: 80px;
         display: flex;
         align-items: center;
-        border-top: 1px solid $gray;
+        border-top: 1px solid $divider_light;
         padding: 0px 20px;
         &-link{
             @include adaptive-var("max-width", 164, 140, 1);
@@ -76,7 +76,7 @@
         }
         &-item{
             padding: 20px;
-            border-bottom:1px solid #ABABAB;
+            border-bottom:1px solid $divider_light;
         }
     }
     &__empty{

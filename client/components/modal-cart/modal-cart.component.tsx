@@ -15,7 +15,7 @@ const Cart = ({
 	products,
 	className = '',
 }: IModalCartProps) => {
-	const {onAddItem, onSubItem, onRemoveItem, totalPrice} = useCart();
+	const {onAddItem, onSubItem, onRemoveItem, totalPrice, onToggleCart} = useCart();
 
 	return (
 		<CSSTransition
@@ -40,7 +40,8 @@ const Cart = ({
 									onAddItem={onAddItem}
 									onRemoveItem={onRemoveItem}
 									onSubItem={onSubItem}
-									href={"/products/"+item.slug}
+									onClose={()=>{onToggleCart(false)}}
+									href={"/product/"+item.slug}
 								/>
 							</div>
 						))}
@@ -78,7 +79,7 @@ const Cart = ({
 									В корзине {products.length} товаров
 								</div>
 								<div className="cart__total-price">
-									на сумму {totalPrice}
+									на сумму {totalPrice.toFixed(2)}
 								</div>
 							</div>
 						</div>

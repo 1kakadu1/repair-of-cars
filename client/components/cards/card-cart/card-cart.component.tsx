@@ -7,7 +7,7 @@ import { Counter } from "../../counter/counter.component";
 import { CloseIcon } from "../../icons/close.icon";
 import Link from "next/link";
 
-export const CardCart = ({data, href ,onAddItem, onSubItem, onRemoveItem}: ICardCartProps)=>{
+export const CardCart = ({data, href ,onAddItem, onSubItem, onRemoveItem, onClose}: ICardCartProps)=>{
     
     const onAdd = ()=> onAddItem ? onAddItem(data) : ()=> void 0;
     const onSub = ()=> onSubItem ? onSubItem(data) : ()=> void 0;
@@ -39,8 +39,8 @@ export const CardCart = ({data, href ,onAddItem, onSubItem, onRemoveItem}: ICard
                 <div className={cl.cardCartInfo}>
                     {
                         href ? 
-                            <Link href={href}>
-                                <a className={cl.cardCartName}>{data.title}</a>
+                            <Link href={href} >
+                                <a onClick={onClose} className={cl.cardCartName}>{data.title}</a>
                             </Link>
                         :
                             <div className={cl.cardCartName}>{data.title}</div>

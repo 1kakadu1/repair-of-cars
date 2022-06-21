@@ -10,9 +10,9 @@ const setProducts = (
 	state: IProductsState,
 	{ payload }: { payload: IProductReqData }
 ) => {
-	state.products = payload.products;
-	state.options = payload.options;
-	state.total = payload.total;
+	state.products = Array.isArray(payload.products) ? payload.products : state.products;
+	state.options = payload.options || state.options;
+	state.total = payload.total || state.total;
 };
 
 const changeProductsOptions = (
@@ -60,7 +60,7 @@ export const  fetchProductsList = createAsyncThunk(
 		const response = await apiService.get<IProductReqData>(`products`,{...body, ...options});
 		return response.data as IProductReqData;
 	}
-  )
+  ) 
 
 export const productsSlice = createSlice({
 	name: PRODUCTS_KEY,
@@ -95,17 +95,17 @@ export const productsSlice = createSlice({
 				};
 			}
         },
-		[fetchProductsList.fulfilled.type]: (state, {payload}) => {
-			state.products = payload.products;
-			state.options = payload.options;
-			state.total = payload.total;
+		[fetchProductsList.fulfilled.type]: (state: IProductsState, {payload}:{payload: IProductReqData}) => {
+			state.products = Array.isArray(payload.products) ? payload.products : state.products;
+			state.options = payload.options || state.options;
+			state.total = payload.total || state.total;
 			state.isLoading = false;
 		},
-		[fetchProductsList.pending.type]: (state) => {
+		[fetchProductsList.pending.type]: (state: IProductsState) => {
 			state.isLoading = true;
 			state.error = ""
 		},
-		[fetchProductsList.rejected.type]: (state, {payload}) => {
+		[fetchProductsList.rejected.type]: (state: IProductsState, {payload}) => {
 			state.error = payload;
 			state.isLoading = false;
 		}

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Navigation } from 'swiper';
-import { IProductData } from "../../../../@types"
+import { IProductData, RoutsPath } from "../../../../@types"
 import { ButtonDefault } from "../../buttons/default/default.component"
 import { CardProduct } from "../../cards/card-product/card-product.component"
 import { Container } from "../../container/container.component"
@@ -12,8 +12,14 @@ import { IPopularProducts } from "./popular-products.model"
 import cl from "./popular-products.module.scss";
 import { useCart } from "../../../hooks/useCart";
 import { useFavorite } from "../../../hooks/useFavorite";
+import { CardProductPlaceholder } from "../../cards/card-product/card-product.placeholder";
 
-const ProductRow = ({products , link}: {products: IProductData[], link?:{title: string, href: string}})=>{
+const ProductRow = ({products , link, loading = false, error = ""}: {
+    products: IProductData[], 
+    link?:{title: string, href: string}
+    loading?: boolean, 
+    error?: string
+})=>{
     const {onAddItem, cart} = useCart();
     const {onToggleFavorite, favorites} = useFavorite();
     
@@ -21,7 +27,16 @@ const ProductRow = ({products , link}: {products: IProductData[], link?:{title: 
         <div className={cl.popularContainerRow}>
             <div className={`container__row ${cl.popularRowMgTop}`}>
             {
-                products.map(item =>(
+                loading && (
+                    [1,2,3,4].map((item)=>(
+                        <div className={`container__col-12 container__col-md-6 container__col-xl-3 container__col--stretch`} key={item+"-placeholder"}>
+                             <CardProductPlaceholder  />
+                        </div>
+                    ))
+                )
+            }
+            {
+                !loading && error === "" && products.map(item =>(
                     <div className={`container__col-12 container__col-md-6 container__col-xl-3 container__col--stretch`} key={item.id}>
                         <CardProduct
                             product={item}
@@ -32,6 +47,11 @@ const ProductRow = ({products , link}: {products: IProductData[], link?:{title: 
                         />
                     </div>
                 ))
+            }
+            {
+                !loading && error !== "" && (
+                    <h3>{error}</h3>
+                )
             }
             </div> 
             {
@@ -51,7 +71,7 @@ const ProductRow = ({products , link}: {products: IProductData[], link?:{title: 
     )
 }
 
-export const SectionProducts = ({title, products, tabsLabel ,swiperProps, link}:IPopularProducts)=>{
+export const SectionProducts = ({title, products, tabsLabel ,swiperProps, link, loading, error}:IPopularProducts)=>{
     const {onAddItem, cart} = useCart();
     const {onToggleFavorite, favorites} = useFavorite();
     const [refTabs, setTabsRef] = useState<any | null>(null);
@@ -65,7 +85,7 @@ export const SectionProducts = ({title, products, tabsLabel ,swiperProps, link}:
         key={key} 
         link={tabsLabel ? {
             title: tabsLabel[index].label || "",
-            href:   tabsLabel[index].slug || "#",
+            href:   RoutsPath.products + "/1"+`?category={"${tabsLabel[index].sectionId}":"${tabsLabel[index].slug}"}` || "#",
         } : undefined}
     />));
     
@@ -119,7 +139,7 @@ export const SectionProducts = ({title, products, tabsLabel ,swiperProps, link}:
                             ))}
                         </Swiper>
                         :
-                        <ProductRow products={products as IProductData[]} />
+                        <ProductRow loading={loading} error={error} products={products as IProductData[]} />
                     }
                     <>
                         {

@@ -20,8 +20,8 @@ const MenuSub = ({links, open, active, onClose}: IMenuSubProps)=>{
                             </div>
                             {
                                 links.filter(item=> item.subMenu !== undefined).map((parent)=>{
-                                    const itemsPreview = parent.subMenu?.filter(item=> item.preview !== undefined) || [];
-                                    const itemsDefault = parent.subMenu?.filter(item=> item.preview === undefined) || [];
+                                    const itemsPreview = parent.subMenu?.filter(item=> item.preview !== undefined && item.preview !== "") || [];
+                                    const itemsDefault = parent.subMenu?.filter(item=> item.preview === undefined || item.preview === "") || [];
 
                                     return (
                                         <div className={`${styles.menu__full__parent}  ${

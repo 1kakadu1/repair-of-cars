@@ -2,7 +2,7 @@ import {Category, Product , CarModel, Seasons, Manufacturers, GripSurfaces, Fuel
 
 export interface IProductData extends Product{
     categories?: Category[],
-    modeCarl?: CarModel;
+    modelCar?: CarModel;
     season?: Seasons;
     manufacturers?: Manufacturers;
     speedIndex?: SpeedIndex;
@@ -13,9 +13,11 @@ export interface IProductData extends Product{
 
 export interface ICommentData{
     comment: string;
+    id: string | number;
+    createdAt: string;
     user:{
         avatar: string;
-        email: string;
+        name: string;
     }
 }
 

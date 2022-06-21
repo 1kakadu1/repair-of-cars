@@ -53,11 +53,13 @@ export const categorySlice = createSlice({
 	},
 	extraReducers: {
         [HYDRATE]: (state, action) => {
-            return {
-                ...state,
-				...action.payload.category,
-				isHydrate: true
-            };
+			if(!state.isHydrate){
+				return {
+					...state,
+					...action.payload.category,
+					isHydrate: true
+				};
+			}
         },
     }
 });

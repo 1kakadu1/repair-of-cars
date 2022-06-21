@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { IProductReqData, IResponse } from '../../../@types';
-import { products } from '../../../server/routers/produts'
+import { products } from '../../../server/routers/products';
+
 
 export default function handler(
   req: NextApiRequest,

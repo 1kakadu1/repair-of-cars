@@ -88,6 +88,7 @@ CREATE TABLE "Category" (
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
+    "name" TEXT NOT NULL DEFAULT E'Yor name',
     "password" TEXT NOT NULL,
     "avatar" TEXT NOT NULL DEFAULT E'',
     "isAdmin" BOOLEAN NOT NULL DEFAULT false,
@@ -235,7 +236,7 @@ CREATE UNIQUE INDEX "user_id_post_id_unique" ON "Comments"("userId", "productId"
 CREATE UNIQUE INDEX "user_id_newsId_unique" ON "CommentsNews"("userId", "newsId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Product_id_name_code_key" ON "Product"("id", "name", "code");
+CREATE UNIQUE INDEX "Product_id_name_code_slug_key" ON "Product"("id", "name", "code", "slug");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Services_id_title_key" ON "Services"("id", "title");

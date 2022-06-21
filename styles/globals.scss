@@ -4,6 +4,7 @@
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';
 @import 'rc-slider/assets/index.css';
+@import 'react-loading-skeleton/dist/skeleton.css';
 
 *, *:before, *:after{
     box-sizing: border-box;
@@ -11,7 +12,7 @@
 
 @font-face {
     font-family: "Montserrat";
-    src: url("../client/assets/fonts/Montserrat/Montserrat-Regular.ttf") format('ttf');
+    src: url("/fonts/Montserrat/Montserrat-Regular.ttf") format('ttf');
     src: local("Montserrat");
     font-weight: normal;
     font-style: normal;
@@ -20,7 +21,7 @@
 
 @font-face {
     font-family: $font_primary_bold;
-    src: url("../client/assets/fonts/Montserrat/Montserrat-SemiBold.ttf") format('ttf');
+    src: url("/fonts/Montserrat/Montserrat-SemiBold.ttf") format('ttf');
     src: local($font_primary_bold);
     font-weight: normal;
     font-style: normal;
@@ -253,4 +254,8 @@ input, button, span, a, div{
 @import "../client//components/container-aside/container-aside.scss";
 @import "../client/components/aside/aside.scss";
 @import "../client/components/breadcrumbs/breadcrumbs.scss";
-@import "../client//components/inputs/range/range.scss";
+@import "../client/components/inputs/range/range.scss";
+@import "../client/components/reviews/reviews.scss";
+@import "../client/components/cards/card-review/card-review.scss";
+@import "../client/components/text-item/text-item.scss";
+@import "../client/components/card-wrapper/card-wrapper.scss";

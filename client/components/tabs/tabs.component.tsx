@@ -53,7 +53,7 @@ export const TabsNavigation = ({
 								<SwiperSlide key={index}>
 									<button
 										key={'tab-' + index}
-										className={`tabs-navigation__item ${
+										className={`tabs-navigation__item tabs-slider ${
 											tab === item.id ? 'active' : ''
 										}`}
 										onClick={handlerClick}
@@ -69,7 +69,7 @@ export const TabsNavigation = ({
 						labels.map((item, index) => (
 							<button
 								key={'tab-' + index}
-								className={`tabs-navigation__item tabs_mgr ${
+								className={`tabs-navigation__item tabs_mgr tabs-default ${
 									tab === item.id ? 'active' : ''
 								}`}
 								onClick={handlerClick}

@@ -1,0 +1,84 @@
+@import "../../../../styles/vars.scss";
+
+.container{
+    padding: 0;
+}
+.actions{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    min-height: 40px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+}
+
+.add{
+    max-width: 168px;
+    position: absolute;
+    left: 0;
+    z-index: 3;
+}
+
+.favorite{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $border_light;
+    border-radius: 2px;
+    position: absolute;
+    right: 0;
+    z-index: 3;
+    &:hover{
+        background-color: $btn_default;
+        border: 1px solid $btn_default;
+        svg path{
+            transition: all 300ms ease;
+            fill: #fff;
+        }
+    }
+    &Active{
+        background-color: $btn_default!important;
+        border: 1px solid $btn_default!important;
+        svg path{
+            transition: all 300ms ease;
+            fill: #fff;
+        }
+    }
+}
+
+.price{
+    font-weight: 500;
+    @include adaptive-var("font-size", 40, 20, 1);
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 12px;
+    &>span{
+        margin-left: 10px;
+    }
+}
+.priceInfo{
+    font-weight: 400;
+    @include adaptive-var("font-size", 16, 14, 1);
+    color: #C4C4C4;
+}
+
+.itemInfo{
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    &>svg{
+        margin-right: 12px;
+    }
+}
+
+.totalPrice{
+    font-weight: 400;
+    @include adaptive-var("font-size", 16, 14, 1);
+    color: #6A6A6A;
+    padding-bottom: 12px;
+}

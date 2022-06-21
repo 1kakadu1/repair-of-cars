@@ -1,0 +1,43 @@
+.text-item{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    &__label{
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        color: #6A6A6A;
+        display: flex;
+        align-items: flex-end;
+        width: 75%;
+    }
+    &__value{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        margin-left: 10px;
+        width: 25%;
+    }
+    &__dot{
+        border-bottom: 1px dotted #6A6A6A;
+        width: 100%;
+        height: 100%;
+        display: inline-flex;
+        margin-bottom: 3px;
+        margin-left: 3px;
+    }
+}
+
+.text-items{
+    &__label{
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 16px;
+        padding-bottom: 24px;
+    }
+    &-list{
+        &__item{
+            padding-bottom: 16px;
+        }
+    }
+}

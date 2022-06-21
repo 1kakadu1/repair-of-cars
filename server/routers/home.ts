@@ -44,7 +44,13 @@ export const home = async (
               take: 4,
             });
         
-        
+            console.log(
+              "aaa",
+              products,
+              productsAutomotive,
+              productsCargo,
+              productsMotorcycle,
+            );
             return res.status(200).json({
               data: {
                   products:{

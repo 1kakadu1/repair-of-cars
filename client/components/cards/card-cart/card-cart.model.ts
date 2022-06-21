@@ -4,6 +4,7 @@ export interface ICardCartProps{
     data: ICartData;
     onAddItem?: (value: ICartData) => void, 
     onSubItem?: (value: ICartData) => void, 
-    onRemoveItem?: (value: string) => void
+    onRemoveItem?: (value: string) => void,
+    onClose?: ()=>void,
     href?: string;
 }

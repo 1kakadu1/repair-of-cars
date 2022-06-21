@@ -2,7 +2,7 @@ import axios, { Method, AxiosRequestConfig } from 'axios';
 import { IResponse } from '../@types';
 import { createSearch } from '../client/utils/href.utils';
 
-export const API_PREFIX = 'https://repair-of-cars.vercel.app/api';//process.env.API_HOST || 'http://localhost:3000/api';
+export const API_PREFIX =  "https://shop-repair.herokuapp.com/api" //"http://localhost:3000/api";
 export const TOKEN_NAME = 'jwt-token';
 export const USER = 'user';
 
@@ -28,7 +28,6 @@ export class ApiService {
   }
 
   protected async baseRequest<TBody, TData>(url: string, method: Method, body?: TBody, additional?: AxiosRequestConfig): Promise<IResponse<{}, string, TData>> {
-
     try {
       const response = await axios({
         url: `${API_PREFIX}/${url}`,
@@ -84,7 +83,7 @@ export class ApiService {
 
   public get<TData>(url: string, body?: { [key: string]: string | number | object }, additional?: AxiosRequestConfig) {
     const query = body ? createSearch(body) : "";
-
+    
     return this.baseRequest<any,TData>(`${url}?${query}`, 'GET', undefined, additional);
   }
 }

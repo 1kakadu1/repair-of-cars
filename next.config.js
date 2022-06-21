@@ -15,6 +15,28 @@ const nextConfig = {
 
     ]
   },
+  async headers() {
+    return [
+      {
+        source: "/fonts/Montserrat/Montserrat-Regular.ttf",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/fonts/Montserrat/Montserrat-SemiBold.ttf",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig

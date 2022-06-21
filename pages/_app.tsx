@@ -1,6 +1,5 @@
 import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
-import { Provider } from 'react-redux'
 import { useState } from 'react';
 import NotificationContext, { NotificationStatus } from '../client/components/notification-bar/notification-bar.context';
 import { NotificationBar } from '../client/components/notification-bar/notification-bar.component';

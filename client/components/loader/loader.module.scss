@@ -9,14 +9,18 @@
         align-items: center;
         justify-content: center;
         z-index: 100;
-        background: rgb(255 255 255 / 90%);
         top: 0px;
         left: 0px;
         &Body{
             width: 320px;
             text-align: center;
         }
-
+        &Opacity{
+          background: rgb(255 255 255 / 90%);
+        }
+        &OpacityOff{
+          background: #fff;
+        }
         &AnimationIcon{
             animation: rotation 8s infinite linear;
         }

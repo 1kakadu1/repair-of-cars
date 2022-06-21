@@ -1,5 +1,6 @@
 export enum RoutsPath{
     products = "/products",
+    product = "/product",
     services = "/services",
     home = "/",
     not_found = '/404'
