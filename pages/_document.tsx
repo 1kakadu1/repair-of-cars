@@ -6,14 +6,14 @@ export default function Document() {
 			<Head>
 				<link
 					rel="preload"
-					href="/fonts/Montserrat/Montserrat-Regular.ttf"
+					href="/static/fonts/Montserrat/Montserrat-Regular.ttf"
 					as="font"
 					type="font/ttf"
 					crossOrigin="anonymous"
 				/>
 				<link
 					rel="preload"
-					href="/fonts/Montserrat/Montserrat-SemiBold.ttf"
+					href="/static/fonts/Montserrat/Montserrat-SemiBold.ttf"
 					as="font"
 					type="font/ttf"
 					crossOrigin="anonymous"

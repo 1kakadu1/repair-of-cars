@@ -1,4 +1,6 @@
 import '../styles/globals.scss';
+import '../styles/_app.css';
+
 import type { AppProps } from 'next/app';
 import { useState } from 'react';
 import NotificationContext, {

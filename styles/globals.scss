@@ -6,14 +6,15 @@
 @import 'rc-slider/assets/index.css';
 @import 'react-loading-skeleton/dist/skeleton.css';
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
+
 *, *:before, *:after{
     box-sizing: border-box;
 }
 
 @font-face {
     font-family: "Montserrat";
-    src: url("/fonts/Montserrat/Montserrat-Regular.ttf") format('ttf');
-    src: local("Montserrat");
+    src: url("/static/fonts/Montserrat/Montserrat-Regular.ttf") format('ttf');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -21,8 +22,7 @@
 
 @font-face {
     font-family: $font_primary_bold;
-    src: url("/fonts/Montserrat/Montserrat-SemiBold.ttf") format('ttf');
-    src: local($font_primary_bold);
+    src: url("/static/fonts/Montserrat/Montserrat-SemiBold.ttf") format('ttf');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -38,7 +38,7 @@ html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockq
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     text-size-adjust: none;
-    font-family: Montserrat, serif;
+    font-family: 'Montserrat', serif;
 }
 
 footer, header, nav, section, main{
