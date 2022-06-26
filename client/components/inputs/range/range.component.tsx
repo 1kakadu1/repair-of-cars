@@ -9,9 +9,7 @@ export const RangeSlider = ({
 	className = '',
 	sliderProps,
 }: IRangeProps) => {
-	
 	const onChangeField = (values: number[] | number, index?: number) => {
-		
 		if (index !== undefined && typeof values === 'number') {
 			const arr = [...value];
 			arr[index] = values;

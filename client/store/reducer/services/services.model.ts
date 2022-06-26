@@ -1,13 +1,12 @@
-import { IServicesData, ReqOptions } from "../../../../@types";
+import { IServicesData, ReqOptions } from '../../../../@types';
 
 export interface IServicesState {
 	isLoading: boolean;
 	error: string;
 	services: IServicesData[];
 	filter: IServicesFilter;
-	options: ReqOptions,
-	total: number
-
+	options: ReqOptions;
+	total: number;
 }
 
 export enum FiltersServicesKey {

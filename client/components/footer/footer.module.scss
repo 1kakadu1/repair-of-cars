@@ -9,15 +9,17 @@
     &::before{
         content: '';
         position: absolute;
-        top: -2px;
+        top: -5px;
         left: 50%;
         transform: translateX(-50%);
-        background-image: url(../../assets/images/footer-icon.png);
+        background-image: url(../../assets/images/footer-icon-2.png);
         width: 96px;
         height: 108px;
         width: 124px;
         height: 102px;
         background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
     }
     &MenuHide{
         display: none;

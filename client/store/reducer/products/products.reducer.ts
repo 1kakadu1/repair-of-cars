@@ -1,6 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
-import { FiltersProductKey, IProductData, IProductFilter, IProductReqData, ReqOptions } from '../../../../@types';
+import {
+	IProductData,
+	IProductFilter,
+	IProductReqData,
+	ReqOptions,
+} from '../../../../@types';
 import { apiService } from '../../../../services/api';
 import { filterUpdate } from '../../../utils/filter.utils';
 import { PRODUCTS_KEY } from './products.const';
@@ -10,14 +15,16 @@ const setProducts = (
 	state: IProductsState,
 	{ payload }: { payload: IProductReqData }
 ) => {
-	state.products = Array.isArray(payload.products) ? payload.products : state.products;
+	state.products = Array.isArray(payload.products)
+		? payload.products
+		: state.products;
 	state.options = payload.options || state.options;
 	state.total = payload.total || state.total;
 };
 
 const changeProductsOptions = (
 	state: IProductsState,
-	{ payload }: { payload: ReqOptions}
+	{ payload }: { payload: ReqOptions }
 ) => {
 	state.options = payload;
 };
@@ -51,31 +58,37 @@ const productsFilter = (
 	state.filter = { ...filterUpdate<IProductFilter>(payload) };
 };
 
-export const  fetchProductsList = createAsyncThunk(
+export const fetchProductsList = createAsyncThunk(
 	'products/fetchProductsList',
 	async ({
 		options,
 		body = {},
-	}: {options: ReqOptions, body?: { [key: string]: string | number | object }}, thunkAPI) => {
-		const response = await apiService.get<IProductReqData>(`products`,{...body, ...options});
+	}: {
+		options: ReqOptions;
+		body?: { [key: string]: string | number | object };
+	}) => {
+		const response = await apiService.get<IProductReqData>(`products`, {
+			...body,
+			...options,
+		});
 		return response.data as IProductReqData;
 	}
-  ) 
+);
 
 export const productsSlice = createSlice({
 	name: PRODUCTS_KEY,
 	initialState: {
-        isLoading: false,
-        error: '',
-        products: [],
-        filter: {},
+		isLoading: false,
+		error: '',
+		products: [],
+		filter: {},
 		options: {
 			limit: 9,
 			offset: 0,
 		},
 		total: 0,
 		isHydrate: false,
-    },
+	},
 	reducers: {
 		productsRequestFailed,
 		setProducts,
@@ -85,32 +98,35 @@ export const productsSlice = createSlice({
 		changeProductsOptions,
 	},
 	extraReducers: {
-        [HYDRATE]: (state, action) => {
-			
-			if(!state.isHydrate){
+		[HYDRATE]: (state, action) => {
+			if (!state.isHydrate) {
 				return {
 					...state,
 					...action.payload.products,
 					isHydrate: true,
 				};
 			}
-        },
-		[fetchProductsList.fulfilled.type]: (state: IProductsState, {payload}:{payload: IProductReqData}) => {
-			state.products = Array.isArray(payload.products) ? payload.products : state.products;
+		},
+		[fetchProductsList.fulfilled.type]: (
+			state: IProductsState,
+			{ payload }: { payload: IProductReqData }
+		) => {
+			state.products = Array.isArray(payload.products)
+				? payload.products
+				: state.products;
 			state.options = payload.options || state.options;
 			state.total = payload.total || state.total;
 			state.isLoading = false;
 		},
 		[fetchProductsList.pending.type]: (state: IProductsState) => {
 			state.isLoading = true;
-			state.error = ""
+			state.error = '';
 		},
-		[fetchProductsList.rejected.type]: (state: IProductsState, {payload}) => {
+		[fetchProductsList.rejected.type]: (state: IProductsState, { payload }) => {
 			state.error = payload;
 			state.isLoading = false;
-		}
-
-    }
-})
+		},
+	},
+});
 
 export const toProductsAction = productsSlice.actions;

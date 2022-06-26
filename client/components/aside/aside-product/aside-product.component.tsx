@@ -3,11 +3,20 @@ import { IAsideProductProps } from './aside-product.model';
 import { SlideDownCustom } from '../../slide-down/slide-down.component';
 import { Aside } from '../aside.component';
 import { ButtonDefault } from '../../buttons/default/default.component';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RangeSlider } from '../../inputs/range/range.component';
-import { fetchProductsList, toProductsAction } from '../../../store/reducer/products/products.reducer';
+import {
+	fetchProductsList,
+	toProductsAction,
+} from '../../../store/reducer/products/products.reducer';
 import { toProductsSelector } from '../../../store/reducer/products/products.selector';
-import { DefaultPrice, FiltersProductKey, IProductFilter, RATING, RoutsPath } from '../../../../@types';
+import {
+	DefaultPrice,
+	FiltersProductKey,
+	IProductFilter,
+	RATING,
+	RoutsPath,
+} from '../../../../@types';
 import { useFilterUrl } from '../../../hooks/useFilterUrl.hook';
 import { Checkbox } from '../../inputs/checkbox/checkbox.component';
 import { toCategorySelector } from '../../../store/reducer/category/category.selector';
@@ -15,12 +24,13 @@ import { CloseIcon } from '../../icons/close.icon';
 import { onChangeCheckbox } from '../../../utils/checkbox.utils';
 import { newArray } from '../../../utils/functions';
 import { filterUpdate } from '../../../utils/filter.utils';
+import { useAppDispatch } from '../../../store/state';
 
 export const AsideProduct = ({
 	className = '',
 	...props
 }: IAsideProductProps) => {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const filters = useSelector(toProductsSelector.filter);
 	const options = useSelector(toProductsSelector.options);
 	const [stateFilter, setStateFilter] = useState<IProductFilter>(filters);
@@ -38,7 +48,7 @@ export const AsideProduct = ({
 			id || '',
 			checked,
 			value
-	);
+		);
 
 	const onChangeRating = (checked: boolean, id?: string, value?: string) =>
 		onChangeCheckbox<FiltersProductKey>(
@@ -50,45 +60,41 @@ export const AsideProduct = ({
 			value
 		);
 
-
 	const onFilter = () => {
 		dispatch(toProductsAction.productsFilter({ ...filters, ...stateFilter }));
 		const filter = filterUpdate<IProductFilter>({ ...filters, ...stateFilter });
-		dispatch(fetchProductsList(
-			{
-				options:{
+		dispatch(
+			fetchProductsList({
+				options: {
 					limit: options.limit,
 					offset: 0,
 				},
-				body:{
-					...filter
-				}
-			}
-		) as any);
+				body: {
+					...filter,
+				},
+			})
+		);
 	};
 
 	const onResetFilter = () => {
 		setStateFilter({});
 		dispatch(toProductsAction.productsFilter({}));
-		dispatch(fetchProductsList(
-			{
-				options:{
+		dispatch(
+			fetchProductsList({
+				options: {
 					limit: 9,
 					offset: 0,
 				},
-				body: undefined
-			}
-		) as any);
+				body: undefined,
+			})
+		);
 	};
 
-	useEffect(()=>{
+	useEffect(() => {
 		pageMount.current = true;
-	},[])
+	}, []);
 
-	useFilterUrl<IProductFilter>(
-		RoutsPath.products,
-		filters, 
-		{
+	useFilterUrl<IProductFilter>(RoutsPath.products, filters, {
 		setFilter: (values) => {
 			setStateFilter(values);
 			dispatch(toProductsAction.productsFilter(values));
@@ -96,8 +102,6 @@ export const AsideProduct = ({
 		pageMount: pageMount.current,
 		changePage: 1,
 	});
-
-
 
 	return (
 		<Aside onClose={props.onClose} open={props.open}>
@@ -123,7 +127,6 @@ export const AsideProduct = ({
 								<CloseIcon />
 							</button>
 						</div>
-
 					</div>
 				</div>
 				<SlideDownCustom
@@ -136,7 +139,9 @@ export const AsideProduct = ({
 							value={
 								stateFilter.rangePrice || [DefaultPrice.min, DefaultPrice.max]
 							}
-							onChange={(value) => onChangeFilter(FiltersProductKey.rangePrice, value)}
+							onChange={(value) =>
+								onChangeFilter(FiltersProductKey.rangePrice, value)
+							}
 							sliderProps={{
 								max: DefaultPrice.max,
 								min: DefaultPrice.min,
@@ -144,14 +149,16 @@ export const AsideProduct = ({
 						/>
 					</div>
 				</SlideDownCustom>
-				
+
 				<SlideDownCustom
 					title="Категории"
 					defaultClose={true}
 					className="aside-slide-down"
 				>
-						<div className="aside-slide-down__list checkbox-list">
-							{category.filter(x=> x.isProduct === true).map((item) => (
+					<div className="aside-slide-down__list checkbox-list">
+						{category
+							.filter((x) => x.isProduct === true)
+							.map((item) => (
 								<div className="checkbox-list__item" key={item.id}>
 									<Checkbox
 										id={item.id}
@@ -166,10 +173,8 @@ export const AsideProduct = ({
 									/>
 								</div>
 							))}
-						</div>
+					</div>
 				</SlideDownCustom>
-
-				
 
 				<SlideDownCustom
 					title="Рейтинг"
@@ -187,7 +192,11 @@ export const AsideProduct = ({
 											<div className="rating-label-wrap">
 												{newArray(item.rating).map((item) => (
 													// eslint-disable-next-line @next/next/no-img-element
-													<img src='/img/star-active-min.png' alt="" key={item} />
+													<img
+														src="/img/star-active-min.png"
+														alt=""
+														key={item}
+													/>
 												))}
 											</div>
 

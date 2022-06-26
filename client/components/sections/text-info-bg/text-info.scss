@@ -1,0 +1,40 @@
+@import "../../../../styles/vars.scss";
+
+.text-info{
+    min-height: 120px;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 2;
+    background-image: url(../../../assets/images/bg-2-2-min.jpg);
+    padding: 60px 0px;
+    background-attachment: fixed;
+    &::before{
+        content: "";
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(20, 20, 20, 0.8);
+    }
+    &__title{
+        color: $primary_text;
+        text-align: center;
+        line-height: 46px;
+        letter-spacing: 0.05em;
+        padding: 30px;
+        font-weight: bold;
+        @include adaptive-var("font-size", 30, 20,1);
+    }
+    &__desc{
+        text-align: justify;
+        color: $write;
+        font-weight: 500;
+        font-size: 18px;
+        @include adaptive-var("font-size", 18, 14,1);
+        line-height: 27px;
+        letter-spacing: 0.03em;
+    }
+}

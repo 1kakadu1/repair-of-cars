@@ -14,21 +14,21 @@ export const ContainerAside = ({
 }: IContainerAsideProps) => {
 	const [open, setOpen] = useState(false);
 
-	useEffect(()=>{
-		return ()=>{
+	useEffect(() => {
+		return () => {
 			const body = document.body;
-				body.style.overflow = "";
-		}
-	},[])
+			body.style.overflow = '';
+		};
+	}, []);
 
-	useEffect(()=>{
+	useEffect(() => {
 		const body = document.body;
-		if(open){
-			body.style.overflow = "hidden";
-		}else{
-			body.style.overflow = "";
+		if (open) {
+			body.style.overflow = 'hidden';
+		} else {
+			body.style.overflow = '';
 		}
-	},[open]);
+	}, [open]);
 
 	return (
 		<div className="container-aside">
@@ -36,7 +36,7 @@ export const ContainerAside = ({
 				<ButtonDefault
 					className="container-aside__action-filter"
 					outline
-					onClick={()=> setOpen(!open)}
+					onClick={() => setOpen(!open)}
 				>
 					<FilterIcon />
 				</ButtonDefault>
@@ -44,9 +44,14 @@ export const ContainerAside = ({
 			<div
 				className={`container-aside__left container-aside_order-${position} ${
 					sticky ? 'container-aside_sticky' : ''
-				} ${shadow ? 'container-aside_shadow_desktop' : ''} ${open ? "container-aside_open" : ""}`}
+				} ${shadow ? 'container-aside_shadow_desktop' : ''} ${
+					open ? 'container-aside_open' : ''
+				}`}
 			>
-				{React.cloneElement(aside,{...aside.props, onClose: ()=> setOpen(false)})}
+				{React.cloneElement(aside, {
+					...aside.props,
+					onClose: () => setOpen(false),
+				})}
 			</div>
 			<div
 				className={`container-aside__content container-aside_height-${height}`}

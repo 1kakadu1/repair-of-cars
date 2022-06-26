@@ -3,7 +3,6 @@ import { createFeatureSelector } from '../../../utils/store.utils';
 import { SERVICES_KEY } from './services.const';
 import { IServicesState } from './services.model';
 
-
 export const servicesSelector =
 	createFeatureSelector<IServicesState>(SERVICES_KEY);
 
@@ -15,20 +14,14 @@ const isLoading = createSelector(
 
 const services = createSelector(servicesSelector, ({ services }) => services);
 
-const total = createSelector(
-	servicesSelector,
-	({ total }) => total
-);
+const total = createSelector(servicesSelector, ({ total }) => total);
 
-const options = createSelector(
-	servicesSelector,
-	({ options }) => options
-);
+const options = createSelector(servicesSelector, ({ options }) => options);
 
 export const toServicesSelector = {
 	isLoading,
 	services,
 	error,
 	total,
-	options
+	options,
 };

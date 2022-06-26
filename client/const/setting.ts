@@ -1,6 +1,11 @@
-export const phones = [{
-    href: "88008888888",
-    label:"8 800 888-88-88"
-}];
+export const phones = [
+	{
+		href: '88888888888',
+		label: '8 888 888-88-88',
+	},
+];
 
 export const money = '₽';
+
+export const BASE_PATH = 'https://shop-repair.herokuapp.com/'; //'http://localhost:3000/'; // not working env variable
+export const BASE_PATH_API = 'https://shop-repair.herokuapp.com/api'; //'http://localhost:3000/api';  // not working env variable

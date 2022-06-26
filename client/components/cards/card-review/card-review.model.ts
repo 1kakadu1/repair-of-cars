@@ -1,5 +1,4 @@
-import { ICommentData } from "../../../../@types";
-
+import { ICommentData } from '../../../../@types';
 
 export interface ICardReviewProps {
 	review: ICommentData;

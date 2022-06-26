@@ -4,14 +4,14 @@ import { ITabs, ITabsContainer, ITabsNavigation } from './tabs.model';
 import { useDidUpdateEffect } from '../../hooks/useDidUpdateEffect';
 import { EffectFade } from 'swiper';
 import TabsContext from './tabs.context';
-import { Navigation } from "swiper";
+import { Navigation } from 'swiper';
 
 export const TabsNavigation = ({
 	className = '',
 	labels,
 	onChange,
 	tab,
-	center
+	center,
 }: ITabsNavigation) => {
 	const handlerClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		const value = e.currentTarget.getAttribute('data-tab') || '0';
@@ -20,67 +20,62 @@ export const TabsNavigation = ({
 
 	return (
 		<div className={'tabs-container ' + className}>
-			
 			<div className="tabs-navigation">
-				{
-					center == true ? (
-						<Swiper
-							className="tabs-navigation-swiper"
-							autoHeight={true}
-							slidesPerView={3}
-							freeMode={true}
-							navigation={true} 
-							modules={[Navigation]}
-							breakpoints={{
-								320: {
+				{center == true ? (
+					<Swiper
+						className="tabs-navigation-swiper"
+						autoHeight={true}
+						slidesPerView={3}
+						freeMode={true}
+						navigation={true}
+						modules={[Navigation]}
+						breakpoints={{
+							320: {
 								width: 320,
-								slidesPerView: "auto",
+								slidesPerView: 'auto',
 								spaceBetween: 90,
-								},
-								640: {
+							},
+							640: {
 								width: 640,
 								slidesPerView: 2,
 								spaceBetween: 90,
-								},
-								996: {
+							},
+							996: {
 								width: 996,
 								slidesPerView: 3,
 								spaceBetween: 0,
-								},
-							}}
+							},
+						}}
+					>
+						{labels.map((item, index) => (
+							<SwiperSlide key={index}>
+								<button
+									key={'tab-' + index}
+									className={`tabs-navigation__item tabs-slider ${
+										tab === item.id ? 'active' : ''
+									}`}
+									onClick={handlerClick}
+									data-tab={item.id}
+								>
+									{item.label}
+								</button>
+							</SwiperSlide>
+						))}
+					</Swiper>
+				) : (
+					labels.map((item, index) => (
+						<button
+							key={'tab-' + index}
+							className={`tabs-navigation__item tabs_mgr tabs-default ${
+								tab === item.id ? 'active' : ''
+							}`}
+							onClick={handlerClick}
+							data-tab={item.id}
 						>
-							{labels.map((item, index) => (
-								<SwiperSlide key={index}>
-									<button
-										key={'tab-' + index}
-										className={`tabs-navigation__item tabs-slider ${
-											tab === item.id ? 'active' : ''
-										}`}
-										onClick={handlerClick}
-										data-tab={item.id}
-									>
-										{item.label}
-									</button>
-								</SwiperSlide>
-							))}
-						</Swiper>
-					):
-					(
-						labels.map((item, index) => (
-							<button
-								key={'tab-' + index}
-								className={`tabs-navigation__item tabs_mgr tabs-default ${
-									tab === item.id ? 'active' : ''
-								}`}
-								onClick={handlerClick}
-								data-tab={item.id}
-							>
-								{item.label}
-							</button>
-						))
-					)
-				}
-
+							{item.label}
+						</button>
+					))
+				)}
 			</div>
 		</div>
 	);
@@ -96,7 +91,6 @@ export const Tabs = ({
 	const ref = useRef<any | null>(null);
 	const { setTabsRef } = useContext(TabsContext);
 	useDidUpdateEffect(() => {
-		console.log("change tab", tab, ref.current)
 		ref && ref.current && ref.current.slideTo(tab);
 		if (update) {
 			setTimeout(() => {
@@ -138,7 +132,7 @@ export const TabsContainer = ({
 	tab,
 	onChangeTab,
 	update,
-	center
+	center,
 }: ITabsContainer) => {
 	const [tabState, setTabState] = useState(init || 0);
 	const tabActive = tab !== undefined ? tab : tabState;

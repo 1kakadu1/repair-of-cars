@@ -1,22 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ICartCommentsData, ICartData  } from '../../../../@types/models/cart';
+import { ICartCommentsData, ICartData } from '../../../../@types/models/cart';
 import { CART_KEY } from './cart.const';
-import { ICart} from './cart.model';
+import { ICart } from './cart.model';
 
 const setCart = (
 	state: ICart,
-	{ payload }: { payload: { prod: ICartData [] } }
+	{ payload }: { payload: { prod: ICartData[] } }
 ) => {
 	state.products = payload.prod;
 };
 
-const add = (
-	state: ICart,
-	{ payload }: { payload: { prod: ICartData } }
-) => {
-	const item = [...state.products].findIndex(
-		(x) => x.id === payload.prod.id
-	);
+const add = (state: ICart, { payload }: { payload: { prod: ICartData } }) => {
+	const item = [...state.products].findIndex((x) => x.id === payload.prod.id);
 
 	if (item === -1) {
 		state.products.push({
@@ -28,13 +23,8 @@ const add = (
 	}
 };
 
-const sub = (
-	state: ICart,
-	{ payload }: { payload: { prod: ICartData } }
-) => {
-	const item = [...state.products].findIndex(
-		(x) => x.id === payload.prod.id
-	);
+const sub = (state: ICart, { payload }: { payload: { prod: ICartData } }) => {
+	const item = [...state.products].findIndex((x) => x.id === payload.prod.id);
 
 	if (item !== -1 && state.products[item].count - 1 > 0) {
 		state.products[item].count -= 1;
@@ -43,13 +33,8 @@ const sub = (
 	}
 };
 
-const remove = (
-	state: ICart,
-	{ payload }: { payload: { id: string; } }
-) => {
-	const item = [...state.products].findIndex(
-		(x) => x.id === payload.id
-	);
+const remove = (state: ICart, { payload }: { payload: { id: string } }) => {
+	const item = [...state.products].findIndex((x) => x.id === payload.id);
 
 	if (item !== -1) {
 		state.products.splice(item, 1);
@@ -64,9 +49,7 @@ const changeComments = (
 	state: ICart,
 	{ payload }: { payload: ICartCommentsData }
 ) => {
-	const item = [...state.products].findIndex(
-		(x) => x.id === payload.id
-	);
+	const item = [...state.products].findIndex((x) => x.id === payload.id);
 
 	if (item !== -1) {
 		state.products[item].comments = payload.comments;

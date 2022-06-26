@@ -1,4 +1,4 @@
-import { ICartData } from "../../../@types/models/cart";
+import { ICartData } from '../../../@types/models/cart';
 
 export interface ICartModalProps {
 	className?: string;

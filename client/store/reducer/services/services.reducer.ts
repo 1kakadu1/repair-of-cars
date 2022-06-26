@@ -37,21 +37,19 @@ const servicesRequestFailed = (
 	state.error = payload;
 };
 
-
 export const servicesSlice = createSlice({
 	name: SERVICES_KEY,
 	initialState: {
-        isLoading: false,
-        error: '',
-        services: [],
-        filter: {},
+		isLoading: false,
+		error: '',
+		services: [],
+		filter: {},
 		total: 0,
 		options: {
 			limit: 0,
 			offset: 0,
-		}
-		
-    },
+		},
+	},
 	reducers: {
 		setServices,
 		servicesRequest,
@@ -59,14 +57,13 @@ export const servicesSlice = createSlice({
 		servicesRequestFailed,
 	},
 	extraReducers: {
-        [HYDRATE]: (state, action) => {
-			//console.log("action.payload=====", action.payload);
-            return {
-                ...state,
-				...action.payload.services
-            };
-        },
-    }
+		// [HYDRATE]: (state, action) => {
+		// 	return {
+		// 		...state,
+		// 		...action.payload.services,
+		// 	};
+		// },
+	},
 });
 
 export const toServicesAction = servicesSlice.actions;

@@ -1,5 +1,5 @@
-export const filterUpdate = <T extends {[key: string]: any}>(payload:T)=>{
-    const filter = { ...payload };
+export const filterUpdate = <T extends { [key: string]: any }>(payload: T) => {
+	const filter = { ...payload };
 
 	Object.keys(filter).forEach((item) => {
 		if (
@@ -9,13 +9,10 @@ export const filterUpdate = <T extends {[key: string]: any}>(payload:T)=>{
 			delete filter[item];
 		}
 
-		if (
-			filter[item] === undefined ||
-			filter[item] === null
-		) {
+		if (filter[item] === undefined || filter[item] === null) {
 			delete filter[item];
 		}
 	});
 
-    return filter;
-}
+	return filter;
+};

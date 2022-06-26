@@ -1,0 +1,57 @@
+@import "../../styles/vars.scss";
+
+.newsPage{
+    padding-top: 40px;
+    &Pagination{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.newsSingle{
+    &Preview{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        max-height: 440px;
+        min-height: 440px;
+    }
+    &Header{
+        display: flex;
+        align-items: center;
+    }
+    &Body{
+        padding: 22px 0px;
+    }
+    &Description{
+        padding-top: 20px;
+    }
+    &DateContainer{
+        display: flex;
+        align-items: center;
+        padding-right: 10px;
+    }
+    &Date{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: #6A6A6A;
+        padding-left: 10px;
+    }
+    &Tags{
+        display: flex;
+        align-items: center;
+        &Item{
+            margin-right: 10px;
+            background-color: #FFE9D5;
+            color: #FF7E00;
+            padding: 4px;
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 16px;
+            &:last-child{
+                margin-right: 0px;
+            }
+        }
+    }
+}

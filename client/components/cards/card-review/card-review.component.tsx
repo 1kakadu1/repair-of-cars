@@ -1,32 +1,38 @@
 import React from 'react';
 // import { Rating } from '../../rating/rating.component';
-import Image from 'next/image'
+import Image from 'next/image';
 import { ICardReviewProps } from './card-review.model';
-import empty from "../../../assets/images/user/user-empty.png";
-import moment from "moment";
+import empty from '../../../assets/images/user/user-empty.png';
+import moment from 'moment';
 
 export const CardReview = ({ review, className = '' }: ICardReviewProps) => {
 	const dateMs = Date.parse(review.createdAt);
 	const date = new Date(dateMs);
-	const day = date.getDay() < 10 ? "0"+date.getDay() : date.getDay();
-	const month = date.getMonth() +1 < 10 ? "0"+(date.getMonth() +1) :date.getMonth() +1;
+	const day = date.getDay() < 10 ? '0' + date.getDay() : date.getDay();
+	const month =
+		date.getMonth() + 1 < 10
+			? '0' + (date.getMonth() + 1)
+			: date.getMonth() + 1;
 	return (
 		<div className={'card-review ' + className}>
 			<div className="card-review-avatar">
 				<Image
-					layout='fill'
-					src={review.user.avatar !== "" ? review.user.avatar : empty}
+					layout="fill"
+					src={review.user.avatar !== '' ? review.user.avatar : empty}
 					alt=""
-					objectFit='cover'
+					objectFit="cover"
 					objectPosition="center"
-                />
+				/>
 			</div>
 			<div className="card-review-info">
 				<div className="card-review-info-header">
 					<div className="card-review-info-header__name">
 						{review.user.name}
 					</div>
-					<div className="card-review-info-header__date"> {day+"."+month+"."+date.getFullYear()}</div>
+					<div className="card-review-info-header__date">
+						{' '}
+						{day + '.' + month + '.' + date.getFullYear()}
+					</div>
 				</div>
 
 				{/* <Rating

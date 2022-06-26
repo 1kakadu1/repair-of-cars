@@ -11,7 +11,9 @@ export const Counter = ({ count, onAdd, onSub, disableAdd }: ICounterProps) => {
 			>
 				-
 			</button>
-			<div className={`${cl.counter__count} ${cl.counter__figure}`}>{count}</div>
+			<div className={`${cl.counter__count} ${cl.counter__figure}`}>
+				{count}
+			</div>
 			<button
 				className={`${cl.counter__btn} ${cl.counter__figure} counter-add`}
 				onClick={onAdd}

@@ -1,0 +1,21 @@
+.notFound{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #3E465F; min-height: 50vh;
+}
+.notFoundDesc{
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 48px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.notFoundIcon{
+    margin-top: 30px;
+}
+.notFoundLink{
+    margin-top: 40px;
+    max-width: 260px;
+}

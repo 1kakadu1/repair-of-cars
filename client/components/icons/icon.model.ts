@@ -1,4 +1,4 @@
 export interface IIconProps {
 	className?: string;
-    viewBox?: string;
+	viewBox?: string;
 }

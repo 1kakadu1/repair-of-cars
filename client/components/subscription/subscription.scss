@@ -1,0 +1,18 @@
+.subscription{
+    &__title{
+        margin-bottom: 15px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+    &__input{
+        margin-top: 11px;
+        margin-bottom: 4px;
+    }
+    &__checkbox{
+        margin-top: 11px;
+        margin-bottom: 11px;
+        & .custom-checkbox+label::before{
+            top: 5px;
+        }
+    }
+}

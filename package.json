@@ -7,7 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "prisma generate && prisma migrate dev && next build"
+    "db:migrate": "dotenv -e .env.local -- npx prisma migrate dev --name init",
+    "db:seed": "dotenv -e .env.local -- npx prisma db seed",
+    "db:studio": "dotenv -e .env.local -- npx prisma studio",
+    "vercel-build": "prisma generate && prisma migrate dev && next build",
+    "prettier:write": "npx prettier --list-different --ignore-path=.gitignore \"**/*.ts(x)?\" --write",
+    "prettier:check": "npx prettier --list-different --ignore-path=.gitignore \"**/*.ts(x)?\""
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
@@ -43,6 +48,7 @@
     "@types/react-dom": "18.0.4",
     "eslint": "8.16.0",
     "eslint-config-next": "12.1.6",
+    "prettier": "2.7.1",
     "typescript": "4.6.4"
   }
 }

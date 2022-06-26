@@ -10,7 +10,12 @@ export interface ITabs {
 
 export interface ITabsNavigation {
 	className?: string;
-	labels: { label: string; id: number | string; slug?: string; sectionId?: string | number}[];
+	labels: {
+		label: string;
+		id: number | string;
+		slug?: string;
+		sectionId?: string | number;
+	}[];
 	onChange: (tab: number) => void;
 	tab: number;
 	center?: boolean;
@@ -18,7 +23,12 @@ export interface ITabsNavigation {
 
 export interface ITabsContainer {
 	className?: string;
-	labels: { label: string; id: number | string ; slug?: string; sectionId?: string | number}[];
+	labels: {
+		label: string;
+		id: number | string;
+		slug?: string;
+		sectionId?: string | number;
+	}[];
 	items: JSX.Element[];
 	init?: number;
 	update?: boolean;

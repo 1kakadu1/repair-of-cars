@@ -1,5 +1,5 @@
-import { IProductData } from "../../../../@types";
+import { IProductData } from '../../../../@types';
 
-export interface ICardActionProductProps{
-    product: IProductData;
+export interface ICardActionProductProps {
+	product: IProductData;
 }

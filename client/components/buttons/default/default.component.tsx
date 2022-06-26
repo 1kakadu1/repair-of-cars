@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 interface IButtonDefaultProps extends React.DOMAttributes<HTMLButtonElement> {
 	className?: string;
@@ -6,7 +6,7 @@ interface IButtonDefaultProps extends React.DOMAttributes<HTMLButtonElement> {
 	link?: string;
 	type?: 'submit' | 'button' | 'reset' | undefined;
 	disabled?: boolean;
-	outline?: boolean
+	outline?: boolean;
 }
 
 export const ButtonDefault = ({
@@ -20,14 +20,20 @@ export const ButtonDefault = ({
 	...props
 }: IButtonDefaultProps) => {
 	return link ? (
-		<Link href={link} >
-			<a  className={`${className} btn-default ${outline ? "btn-default_outline": ""}`}>
+		<Link href={link}>
+			<a
+				className={`${className} btn-default ${
+					outline ? 'btn-default_outline' : ''
+				}`}
+			>
 				<span className="btn-default__content">{children}</span>
 			</a>
 		</Link>
 	) : (
 		<button
-			className={`${className} btn-default ${outline ? "btn-default_outline": ""}`}
+			className={`${className} btn-default ${
+				outline ? 'btn-default_outline' : ''
+			}`}
 			onClick={onClick}
 			type={type}
 			disabled={disabled}

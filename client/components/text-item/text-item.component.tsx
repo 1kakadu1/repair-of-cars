@@ -11,7 +11,10 @@ export const TextItem = ({
 }) => {
 	return (
 		<div className={'text-item ' + className}>
-			<div className="text-item__label">{label}<span className="text-item__dot"></span></div>
+			<div className="text-item__label">
+				{label}
+				<span className="text-item__dot"></span>
+			</div>
 			<div className="text-item__value">{value}</div>
 		</div>
 	);

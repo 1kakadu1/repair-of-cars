@@ -10,10 +10,10 @@ const FAVORITE_STORE_LOCAL = 'favorite';
 export const useFavorite = () => {
 	const dispatch = useDispatch();
 	const onToggleFavorite = (product: IFavoriteData) =>
-		dispatch(toFavoriteAction.toggleFavorite({ product}));
+		dispatch(toFavoriteAction.toggleFavorite({ product }));
 	const onToggleWindowFavorite = (value: boolean) =>
 		dispatch(toFavoriteAction.toggleWindow(value));
-	const onRemove = (id: string)=> dispatch(toFavoriteAction.remove({id}));
+	const onRemove = (id: string) => dispatch(toFavoriteAction.remove({ id }));
 
 	const favorites = useSelector(toFavoriteSelector.favorites);
 	const open = useSelector(toFavoriteSelector.isOpen);
@@ -28,10 +28,7 @@ export const useFavorite = () => {
 
 	useEffect(() => {
 		const localCart = localStorage.getItem(FAVORITE_STORE_LOCAL);
-		if (
-			localCart !== null &&
-			localCart !== '[]'
-		) {
+		if (localCart !== null && localCart !== '[]') {
 			dispatch(toFavoriteAction.setFavorite(JSON.parse(localCart)));
 		}
 		refInit.current = true;

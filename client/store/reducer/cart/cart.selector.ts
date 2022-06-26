@@ -7,10 +7,9 @@ export const cartSelector = createFeatureSelector<ICart>(CART_KEY);
 
 const isOpen = createSelector(cartSelector, ({ isOpen }) => isOpen);
 
-
 const getCartProductByID = (id: string) =>
 	createSelector(cartSelector, ({ products }) =>
-		products.find((x) => x.id === id )
+		products.find((x) => x.id === id)
 	);
 const getTotalPrice = (id?: string) =>
 	createSelector(cartSelector, ({ products }) => {

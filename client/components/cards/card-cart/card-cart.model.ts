@@ -1,10 +1,10 @@
-import { ICartData } from "../../../../@types/models/cart";
+import { ICartData } from '../../../../@types/models/cart';
 
-export interface ICardCartProps{
-    data: ICartData;
-    onAddItem?: (value: ICartData) => void, 
-    onSubItem?: (value: ICartData) => void, 
-    onRemoveItem?: (value: string) => void,
-    onClose?: ()=>void,
-    href?: string;
+export interface ICardCartProps {
+	data: ICartData;
+	onAddItem?: (value: ICartData) => void;
+	onSubItem?: (value: ICartData) => void;
+	onRemoveItem?: (value: string) => void;
+	onClose?: () => void;
+	href?: string;
 }

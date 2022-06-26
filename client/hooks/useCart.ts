@@ -12,8 +12,7 @@ export const useCart = () => {
 		dispatch(toCartAction.add({ prod: product }));
 	const onSubItem = (product: ICartData) =>
 		dispatch(toCartAction.sub({ prod: product }));
-	const onRemoveItem = (id: string) =>
-		dispatch(toCartAction.remove({ id }));
+	const onRemoveItem = (id: string) => dispatch(toCartAction.remove({ id }));
 	const onToggleCart = (toggle: boolean) => {
 		dispatch(toCartAction.toggleCart(toggle));
 	};

@@ -1,13 +1,18 @@
-import { INewsData, IProductData, IServicesData, ReqOptions } from "../../../../@types";
+import {
+	INewsData,
+	IProductData,
+	IServicesData,
+	ReqOptions,
+} from '../../../../@types';
 
 export interface IHomeState {
 	isLoading: boolean;
 	error: string;
 	products: {
-		all: IProductData[],
-		popular: IProductData[],
+		all: IProductData[];
+		popular: IProductData[];
 	};
-	services: IServicesData[],
-	news: INewsData[],
+	services: IServicesData[];
+	news: INewsData[];
 	isHydrate: boolean;
 }

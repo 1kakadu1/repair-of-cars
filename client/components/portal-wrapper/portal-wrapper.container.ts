@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export interface IPortalWrapper {
@@ -20,7 +20,8 @@ export function PortalWrapper({
 	const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(
 		null
 	);
-	const useEnhancedEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
+	const useEnhancedEffect =
+		typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
 	useEnhancedEffect(() => {
 		let element = document.getElementById(wrapperId);
 		let systemCreated = false;

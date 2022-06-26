@@ -1,4 +1,4 @@
-import { ICommentData } from "../../../@types";
+import { ICommentData } from '../../../@types';
 
 export interface IReviewsProps {
 	className?: string;

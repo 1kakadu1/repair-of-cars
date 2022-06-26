@@ -25,11 +25,17 @@ export const Rating = ({
 		totalStars: 5,
 		initialSelectedValue: selected,
 		// eslint-disable-next-line @next/next/no-img-element
-		renderFull: <img alt="star" src="/img/star-active-min.png" style={{ width: width }} />,
+		renderFull: (
+			<img alt="star" src="/img/star-active-min.png" style={{ width: width }} />
+		),
 		// eslint-disable-next-line @next/next/no-img-element
-		renderEmpty: <img alt="star" src="/img/star-empty-min.png" style={{ width: width }} />,
+		renderEmpty: (
+			<img alt="star" src="/img/star-empty-min.png" style={{ width: width }} />
+		),
 		// eslint-disable-next-line @next/next/no-img-element
-		renderHalf: <img alt="star" src="img/star-half-min.png" style={{ width: width }} />,
+		renderHalf: (
+			<img alt="star" src="img/star-half-min.png" style={{ width: width }} />
+		),
 	};
 	return (
 		<div

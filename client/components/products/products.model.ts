@@ -1,3 +1,1 @@
-export interface IProductsProps{
-    
-}
+export interface IProductsProps {}

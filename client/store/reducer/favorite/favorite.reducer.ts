@@ -6,9 +6,7 @@ const add = (
 	state: IFavoriteState,
 	{ payload }: { payload: { prod: IFavoriteData } }
 ) => {
-	const item = [...state.favorites].findIndex(
-		(x) => x.id === payload.prod.id
-	);
+	const item = [...state.favorites].findIndex((x) => x.id === payload.prod.id);
 
 	if (item === -1) {
 		state.favorites.push({
@@ -19,7 +17,7 @@ const add = (
 
 const toggleFavorite = (
 	state: IFavoriteState,
-	{ payload }: { payload: { product: IFavoriteData; } }
+	{ payload }: { payload: { product: IFavoriteData } }
 ) => {
 	const item = [...state.favorites].findIndex(
 		(x) => x.id === payload.product.id
@@ -34,11 +32,9 @@ const toggleFavorite = (
 
 const remove = (
 	state: IFavoriteState,
-	{ payload }: { payload: { id: string; } }
+	{ payload }: { payload: { id: string } }
 ) => {
-	const item = [...state.favorites].findIndex(
-		(x) => x.id === payload.id
-	);
+	const item = [...state.favorites].findIndex((x) => x.id === payload.id);
 
 	if (item !== -1) {
 		state.favorites.splice(item, 1);

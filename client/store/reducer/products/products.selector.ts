@@ -12,18 +12,12 @@ const isLoading = createSelector(
 	({ isLoading }) => isLoading
 );
 const products = createSelector(productsSelector, ({ products }) => products);
-const total = createSelector(
-	productsSelector,
-	({ total }) => total
-);
+const total = createSelector(productsSelector, ({ total }) => total);
 const isHydrate = createSelector(
 	productsSelector,
 	({ isHydrate }) => isHydrate
 );
-const options = createSelector(
-	productsSelector,
-	({ options }) => options 
-);
+const options = createSelector(productsSelector, ({ options }) => options);
 const filter = createSelector(productsSelector, ({ filter }) => filter);
 const productsLimit = (start: number, end: number) =>
 	createSelector(productsSelector, ({ products }) =>
@@ -34,7 +28,6 @@ const getProductBySlug = (slug: string) =>
 		products.find((x) => x.slug === slug)
 	);
 
-
 export const toProductsSelector = {
 	isLoading,
 	products,
@@ -44,5 +37,5 @@ export const toProductsSelector = {
 	total,
 	getProductBySlug,
 	options,
-	isHydrate
+	isHydrate,
 };

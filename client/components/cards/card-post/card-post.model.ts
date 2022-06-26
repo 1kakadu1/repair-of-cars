@@ -1,4 +1,4 @@
-export interface ICardPostProps<T>{
-    data: T,
-    href: string;
+export interface ICardPostProps<T> {
+	data: T;
+	href: string;
 }

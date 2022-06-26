@@ -2,8 +2,8 @@
 CREATE TABLE "CarModel" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "CarModel_pkey" PRIMARY KEY ("id")
 );
@@ -12,8 +12,8 @@ CREATE TABLE "CarModel" (
 CREATE TABLE "Seasons" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Seasons_pkey" PRIMARY KEY ("id")
 );
@@ -22,8 +22,8 @@ CREATE TABLE "Seasons" (
 CREATE TABLE "Conditions" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Conditions_pkey" PRIMARY KEY ("id")
 );
@@ -32,8 +32,8 @@ CREATE TABLE "Conditions" (
 CREATE TABLE "Manufacturers" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Manufacturers_pkey" PRIMARY KEY ("id")
 );

@@ -1,22 +1,10 @@
-import { INewsData, ReqOptions } from "../../../../@types";
+import { INewsData, ReqOptions } from '../../../../@types';
 
 export interface INewsState {
 	isLoading: boolean;
 	error: string;
 	news: INewsData[];
-	filter: INewsFilter;
-	options: ReqOptions,
+	options: ReqOptions;
 	total: number;
-	
-
+	isHydrate: boolean;
 }
-
-export enum FiltersServicesKey {
-	order = 'order',
-}
-
-export interface INewsFilter {
-	[FiltersServicesKey.order]?: TypeOrder;
-}
-
-export type TypeOrder = 'asc' | 'desc';

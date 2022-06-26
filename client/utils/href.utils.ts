@@ -1,5 +1,4 @@
-import { Router } from "next/router";
-
+import { Router } from 'next/router';
 
 export function updateURL(
 	history: Router,
@@ -31,7 +30,6 @@ export const createSearch = (filter: { [key: string]: any }) => {
 	return Object.keys(filter || {})
 		.map(function (key) {
 			if (typeof filter[key] === 'object' || Array.isArray(filter[key])) {
-				console.log("createSearch",Array.isArray(filter[key]), filter[key])
 				return `${key}=${JSON.stringify(filter[key])}`;
 			}
 			return key + '=' + filter[key];
@@ -42,7 +40,7 @@ export const createSearch = (filter: { [key: string]: any }) => {
 export function queryParse(search: string) {
 	let qd: { [key: string]: any } = {};
 
-	if (search && search !== "?")
+	if (search && search !== '?')
 		search
 			.substr(1)
 			.split('&')
@@ -50,8 +48,8 @@ export function queryParse(search: string) {
 				let s = item.split('='),
 					k = s[0],
 					v = s[1] && decodeURIComponent(s[1]);
-				try { 
-					const parse =JSON.parse(v);
+				try {
+					const parse = JSON.parse(v);
 					if (typeof parse === 'object' || Array.isArray(parse)) {
 						qd[k] = parse;
 					} else {

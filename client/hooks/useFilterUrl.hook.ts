@@ -9,15 +9,15 @@ export const useFilterUrl = <T extends { [key: string]: any }>(
 		offUpdate?: boolean;
 		unMountFilter?: () => void;
 		pageMount?: boolean;
-		changePage?: number | string
+		changePage?: number | string;
 	}
 ) => {
-	const {push, query} = useRouter();
-	const searchObj  = JSON.parse(JSON.stringify(query));
+	const { push, query } = useRouter();
+	const searchObj = JSON.parse(JSON.stringify(query));
 	delete searchObj['page'];
 
-	const search = "?"+createSearch(searchObj);
-	const {pageMount, changePage} = options || {};
+	const search = '?' + createSearch(searchObj);
+	const { pageMount, changePage } = options || {};
 	const initRef = useRef(false);
 	const [newSearch, setNewSearch] = useState('');
 	const { offUpdate = false } = options || {};
@@ -26,22 +26,20 @@ export const useFilterUrl = <T extends { [key: string]: any }>(
 		const q = createSearch(value);
 		setNewSearch(q);
 		push({
-			pathname: pathname+"/"+(changePage ?  changePage : query["page"]),
-			search: q === "" ? "" : '?' + q,
+			pathname: pathname + '/' + (changePage ? changePage : query['page']),
+			search: q === '' ? '' : '?' + q,
 		});
 	};
 
 	useEffect(() => {
 		if (initRef.current && !offUpdate && pageMount === true) {
 			updateUrl(filter);
-		} else{
+		} else {
 			initRef.current = true;
 		}
-
 	}, [filter]);
 
 	useEffect(() => {
-		
 		if (options && options.setFilter && search) {
 			const filterMount = queryParse(search);
 			setNewSearch(createSearch(filterMount));
@@ -67,7 +65,6 @@ const createSearch = (filter: { [key: string]: any }) => {
 	return Object.keys(filter || {})
 		.map(function (key) {
 			if (typeof filter[key] === 'object' || Array.isArray(filter[key])) {
-				console.log("createSearch",Array.isArray(filter[key]), filter[key])
 				return `${key}=${JSON.stringify(filter[key])}`;
 			}
 			return key + '=' + filter[key];
@@ -78,7 +75,7 @@ const createSearch = (filter: { [key: string]: any }) => {
 function queryParse(search: string) {
 	let qd: { [key: string]: any } = {};
 
-	if (search && search !== "?")
+	if (search && search !== '?')
 		search
 			.substr(1)
 			.split('&')
@@ -86,8 +83,8 @@ function queryParse(search: string) {
 				let s = item.split('='),
 					k = s[0],
 					v = s[1] && decodeURIComponent(s[1]);
-				try { 
-					const parse =JSON.parse(v);
+				try {
+					const parse = JSON.parse(v);
 					if (typeof parse === 'object' || Array.isArray(parse)) {
 						qd[k] = parse;
 					} else {

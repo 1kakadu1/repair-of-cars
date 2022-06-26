@@ -5,7 +5,7 @@ import { CSSTransition } from 'react-transition-group';
 import { IconArrowLeft } from '../icons/arrow-left.icon.component';
 import { useFavorite } from '../../hooks/useFavorite';
 import { CardCart } from '../cards/card-cart/card-cart.component';
-import empty from "../../assets/images/empty-cart.svg";
+import empty from '../../assets/images/empty-cart.svg';
 import Image from 'next/image';
 
 const Favorite = ({
@@ -14,7 +14,7 @@ const Favorite = ({
 	favorites,
 	className = '',
 }: IFavoriteProps) => {
-		const {onRemove, onToggleWindowFavorite} = useFavorite();
+	const { onRemove, onToggleWindowFavorite } = useFavorite();
 
 	return (
 		<CSSTransition
@@ -34,11 +34,13 @@ const Favorite = ({
 					<div className="favorite__list">
 						{favorites.map((item) => (
 							<div className="favorite__list-item" key={item.id}>
-								<CardCart 
+								<CardCart
 									data={item}
 									onRemoveItem={onRemove}
-									onClose={()=>{onToggleWindowFavorite(false)}}
-									href={"/product/"+item.slug}
+									onClose={() => {
+										onToggleWindowFavorite(false);
+									}}
+									href={'/product/' + item.slug}
 								/>
 							</div>
 						))}
@@ -48,13 +50,13 @@ const Favorite = ({
 						className={`favorite__empty${
 							favorites.length === 0 ? ' show' : ''
 						}`}
-					>						
+					>
 						<div className="favorite__empty-preview-container">
 							<Image
-								layout='fill'
+								layout="fill"
 								src={empty}
 								alt=""
-								objectFit='cover'
+								objectFit="cover"
 								objectPosition="center"
 							/>
 						</div>
@@ -89,8 +91,8 @@ export const FavoriteModal = ({
 	portalID = 'portal-favorite',
 	...props
 }: IFavoriteModalProps) => {
-	const {onToggleWindowFavorite, open, favorites } = useFavorite()
-	const onClose= ()=> onToggleWindowFavorite(false);
+	const { onToggleWindowFavorite, open, favorites } = useFavorite();
+	const onClose = () => onToggleWindowFavorite(false);
 	const portalRef = useRef<HTMLElement | null>();
 	const bodyRef = useRef<HTMLElement | null>();
 
@@ -122,7 +124,6 @@ export const FavoriteModal = ({
 				bodyRef.current.style.overflow = '';
 			}
 	}, [open]);
-
 
 	return (
 		<>

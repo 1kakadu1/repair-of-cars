@@ -10,32 +10,32 @@ datasource db {
 model CarModel {
   id        Int          @id @default(autoincrement())
   name      String
-  updatedAt     DateTime @updatedAt
-  createdAt     DateTime    @default(now())
+  updatedAt     DateTime? @updatedAt
+  createdAt     DateTime?    @default(now())
   Product   Product[]
 }
 
 model Seasons {
   id        Int          @id @default(autoincrement())
   name      String
-  updatedAt     DateTime @updatedAt
-  createdAt     DateTime    @default(now())
+  updatedAt     DateTime?     @updatedAt
+  createdAt     DateTime?    @default(now())
   Product   Product[]
 }
 
 model Conditions {
   id        Int          @id @default(autoincrement())
   name      String
-  updatedAt     DateTime @updatedAt
-  createdAt     DateTime    @default(now())
+  updatedAt     DateTime? @updatedAt
+  createdAt     DateTime?    @default(now())
   Product   Product[]
 }
 
 model Manufacturers {
   id        Int          @id @default(autoincrement())
   name      String
-  updatedAt     DateTime @updatedAt
-  createdAt     DateTime    @default(now())
+  updatedAt     DateTime? @updatedAt
+  createdAt     DateTime?    @default(now())
   Product   Product[]
 }
 

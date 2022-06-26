@@ -50,6 +50,9 @@
     &Icon{
         display: block;
         margin-right: 8px;
+        &Padding{
+            padding-top: 2px;
+        }
     }
     &Tags{
         display: flex;

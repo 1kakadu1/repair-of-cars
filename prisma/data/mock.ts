@@ -1,5 +1,5 @@
-export const mockProductDescription = ({name = ""}: {name?: string})=>{
-    return `
+export const mockProductDescription = ({ name = '' }: { name?: string }) => {
+	return `
         <h3>
             Описание модели ${name}
         </h3>
@@ -32,4 +32,80 @@ export const mockProductDescription = ({name = ""}: {name?: string})=>{
             </span>
          </p>  
     `;
-}
+};
+
+export const mockNewsDescription = ({
+	table,
+	ol,
+	li,
+}: {
+	table?: boolean;
+	ol?: boolean;
+	li?: boolean;
+}) => {
+	const descOl = ol
+		? `
+    <h4>
+        Нумерованный список
+    </h4>
+    <ol>
+        <li>Нумерованный пункт 1</li>
+        <li>Нумерованный пункт 2</li>
+        <li>Нумерованный пункт 3</li>
+        <li>Нумерованный пункт 4</li>
+    </ol>
+    `
+		: '';
+	const descLi = li
+		? `        
+        <h4>
+            Маркированный список
+        </h4>
+        <ul>
+            <li>Маркированный пункт 1</li>
+            <li>Маркированный пункт 2</li>
+            <li>Маркированный пункт 3</li>
+            <li>Маркированный пункт 4</li>
+        </ul>`
+		: '';
+	const descTable = table
+		? `
+        <table>
+            <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+            </tr>
+            <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+            </tr>
+            <tr>
+                <td>Centro comercial Moctezuma</td>
+                <td>Francisco Chang</td>
+                <td>Mexico</td>
+            </tr>
+        </table>
+    `
+		: '';
+
+	return `
+        <h2>
+            H2 Подзаголовок с текстом
+        </h2>
+        <p>
+            Чувствительность к командам водителя, а также устойчивость автомобиля гарантируют установленные под специальным уклоном к центру тяжести автомобиля грани средних ребер и элементов грунтозацепов. Широкие борозды в форме трапеции, которые покрывают внешний слой модели, помогают шине самоочищаться. Они сгоняют воду и грязь под шину, что также помогает не впитывать лишнюю влагу.
+        </p>
+        <h3>
+            H2 Подзаголовок с текстом
+         </h3>
+        <p>
+            При создании шины были применены следующие технологии:
+        </p>
+        ${descLi}
+        ${descOl}
+        ${descTable}
+        <img alt="" src="/img//foto.png">
+    `;
+};

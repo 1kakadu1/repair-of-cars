@@ -27,3 +27,22 @@ export const newArray = (length: number) => {
 	}
 	return arr;
 };
+
+export const parseDate = (value?: string | null | Date) => {
+	const date = value ? new Date(value) : new Date();
+	const day = date.getDay() < 10 ? '0' + date.getDay() : date.getDay();
+	const month =
+		date.getMonth() + 1 < 10
+			? '0' + (date.getMonth() + 1)
+			: date.getMonth() + 1;
+	const hour = date.getHours();
+	const min = date.getMinutes();
+	return {
+		date,
+		day,
+		month,
+		hour,
+		min,
+		year: date.getFullYear(),
+	};
+};

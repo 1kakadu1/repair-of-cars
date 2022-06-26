@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from "next/link";
+import Link from 'next/link';
 import { IBreadcrumbsProps } from './breadcrumbs.model';
 
 export const Breadcrumbs = ({
@@ -12,9 +12,7 @@ export const Breadcrumbs = ({
 			{!hideHome && (
 				<div className="breadcrumbs__item">
 					<Link href={'/'}>
-						<a className={'breadcrumbs__link'}>
-							Главная
-						</a>
+						<a className={'breadcrumbs__link'}>Главная</a>
 					</Link>
 					<div className="breadcrumbs__separator">
 						<svg
