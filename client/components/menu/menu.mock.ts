@@ -1,3 +1,4 @@
+import { RoutsPath } from '../../../@types';
 import { IMenuItem } from './menu.model';
 
 export const menuMock: IMenuItem[] = [
@@ -22,12 +23,17 @@ export const menuMock: IMenuItem[] = [
 				parentHref: '/',
 			},
 			{
-				href: '/products/1',
+				href: RoutsPath.products+"/1",
 				name: 'Товары',
 				parentHref: '/',
 			},
 			{
-				href: '/about',
+				href: RoutsPath.news_to_page,
+				name: 'Новости',
+				parentHref: '/',
+			},
+			{
+				href: RoutsPath.about,
 				name: 'О нас',
 				parentHref: '/',
 			},
