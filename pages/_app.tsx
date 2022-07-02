@@ -7,9 +7,10 @@ import NotificationContext, {
 	NotificationStatus,
 } from '../client/components/notification-bar/notification-bar.context';
 import { NotificationBar } from '../client/components/notification-bar/notification-bar.component';
-import { wrapper } from '../client/store/state';
+import { store, wrapper } from '../client/store/state';
 import { ModalCart } from '../client/components/modal-cart/modal-cart.component';
 import { FavoriteModal } from '../client/components/favorite/favorite.component';
+import { intPropsServices } from '../services/init-props';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const [notification, setNotification] = useState({
@@ -26,5 +27,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 		</NotificationContext.Provider>
 	);
 }
+//TODO: заменить any для ctx и Componentж
+MyApp.getInitialProps = wrapper.getInitialAppProps(
+	(store) =>
+		async ({ ctx, Component }: { Component: any; ctx: any }) => {
+			const pageProps = Component.getInitialProps
+				? await Component.getInitialProps(ctx)
+				: {};
+			await intPropsServices.getCategory(store);
+			return { ...pageProps };
+		}
+);
 
 export default wrapper.withRedux(MyApp);

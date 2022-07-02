@@ -83,7 +83,12 @@ const MenuSub = ({ links, open, active, onClose }: IMenuSubProps) => {
 											}
 										>
 											{itemsDefault.map((item) => (
-												<Link href={(parent.href === "/" ? "" : parent.href) + item.href} key={item.href}>
+												<Link
+													href={
+														(parent.href === '/' ? '' : parent.href) + item.href
+													}
+													key={item.href}
+												>
 													<a
 														className={
 															styles.menuSubitem + ' ' + styles.menuSubitemLink

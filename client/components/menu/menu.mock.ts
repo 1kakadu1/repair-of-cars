@@ -23,7 +23,7 @@ export const menuMock: IMenuItem[] = [
 				parentHref: '/',
 			},
 			{
-				href: RoutsPath.products+"/1",
+				href: RoutsPath.products + '/1',
 				name: 'Товары',
 				parentHref: '/',
 			},

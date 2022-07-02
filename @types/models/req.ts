@@ -53,12 +53,19 @@ export interface ICategoryReqData {
 }
 
 export interface IProductReqData {
-	products: IProductData | IProductData[];
+	products: IProductData[];
 	meta?: {
 		title: string;
 	};
 	options?: ReqOptions;
 	total?: number;
+}
+
+export interface IProductSingleReqData {
+	product: IProductData;
+	meta?: {
+		title: string;
+	};
 }
 
 export interface IProductSimilarReqData {

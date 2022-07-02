@@ -4,6 +4,7 @@ import { ProductServices } from '../services/product.services';
 import {
 	IProductData,
 	IProductReqData,
+	IProductSingleReqData,
 	IResponse,
 	ReqOptionsOrderType,
 } from '../../@types';
@@ -13,7 +14,9 @@ const prisma = new PrismaClient();
 
 export const products = async (
 	req: NextApiRequest,
-	res: NextApiResponse<IResponse<{}, string, IProductReqData>>
+	res: NextApiResponse<
+		IResponse<{}, string, IProductReqData | IProductSingleReqData>
+	>
 ) => {
 	const productService = new ProductServices(prisma);
 
@@ -49,7 +52,7 @@ export const products = async (
 
 			return res.status(200).json({
 				data: {
-					products: products.data,
+					product: products.data,
 				},
 			});
 		} catch (error: any) {

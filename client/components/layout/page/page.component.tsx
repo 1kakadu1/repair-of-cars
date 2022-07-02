@@ -1,8 +1,10 @@
 import Head from 'next/head';
+import { intPropsServices } from '../../../../services/init-props';
+import { wrapper } from '../../../store/state';
 import { Footer } from '../../footer/footer';
 import { Header } from '../../header/header.component';
 
-export const PageLayout = ({
+const Page = ({
 	children,
 	head,
 }: {
@@ -24,3 +26,5 @@ export const PageLayout = ({
 		</>
 	);
 };
+
+export const PageLayout = Page;

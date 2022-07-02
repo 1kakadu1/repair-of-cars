@@ -7,7 +7,7 @@ export enum RoutsPath {
 	news = '/news',
 	news_to_page = '/news/1',
 	news_single = '/news/post',
-	about = '/about'
+	about = '/about',
 }
 
 export enum DefaultPrice {

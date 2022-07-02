@@ -111,9 +111,7 @@ export const productsSlice = createSlice({
 			state: IProductsState,
 			{ payload }: { payload: IProductReqData }
 		) => {
-			state.products = Array.isArray(payload.products)
-				? payload.products
-				: state.products;
+			state.products = payload.products;
 			state.options = payload.options || state.options;
 			state.total = payload.total || state.total;
 			state.isLoading = false;
