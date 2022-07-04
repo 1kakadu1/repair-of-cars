@@ -95,7 +95,11 @@ const MenuSub = ({ links, open, active, onClose }: IMenuSubProps) => {
 														}
 														key={item.href}
 													>
-														{item.name}
+														<div>{item.name}</div>
+
+														<div className={styles.menuSubitemInfoDesc}>
+															{item.description || ''}
+														</div>
 													</a>
 												</Link>
 											))}

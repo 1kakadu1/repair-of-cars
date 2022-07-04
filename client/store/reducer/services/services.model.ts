@@ -4,17 +4,7 @@ export interface IServicesState {
 	isLoading: boolean;
 	error: string;
 	services: IServicesData[];
-	filter: IServicesFilter;
+	isHydrate: boolean;
 	options: ReqOptions;
 	total: number;
 }
-
-export enum FiltersServicesKey {
-	order = 'order',
-}
-
-export interface IServicesFilter {
-	[FiltersServicesKey.order]?: TypeOrder;
-}
-
-export type TypeOrder = 'asc' | 'desc';

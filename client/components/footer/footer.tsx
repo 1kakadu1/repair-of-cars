@@ -1,15 +1,16 @@
 import styles from './footer.module.scss';
 import { Container } from '../container/container.component';
 import { ListItems } from '../list-items/list-items.component';
-import { menuMock } from '../menu/menu.mock';
 import { phones } from '../../const/setting';
 import { ButtonDefault } from '../buttons/default/default.component';
 import { ModalCallback } from '../modals/modal-callback/modal-callback.component';
 import { useState } from 'react';
 import { RoutsPath } from '../../../@types';
+import { useCreateCategoryMenu } from '../menu/menu.hook';
 
 export const Footer = () => {
 	const [open, setOpen] = useState<boolean>(false);
+	const { menu } = useCreateCategoryMenu({});
 
 	return (
 		<section className={styles.footer}>
@@ -21,7 +22,7 @@ export const Footer = () => {
 						<ListItems
 							title="Товары"
 							items={
-								menuMock[0]?.subMenu?.map((item) => ({
+								menu[0]?.subMenu?.map((item) => ({
 									name: item.name,
 									href: RoutsPath.products + item.href,
 								})) || []
@@ -32,7 +33,7 @@ export const Footer = () => {
 						<ListItems
 							title="Услуги"
 							items={
-								menuMock[1]?.subMenu?.map((item) => ({
+								menu[1]?.subMenu?.map((item) => ({
 									name: item.name,
 									href: RoutsPath.services.toString() + item.href,
 								})) || []
@@ -96,7 +97,7 @@ export const Footer = () => {
 						<ListItems
 							title="Компания"
 							items={
-								menuMock[2]?.subMenu?.map((item) => ({
+								menu[2]?.subMenu?.map((item) => ({
 									name: item.name,
 									href: item.href,
 								})) || []

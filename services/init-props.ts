@@ -3,11 +3,13 @@ import {
 	IHomeReqData,
 	INewsReqData,
 	IProductReqData,
+	IServicesReqData,
 } from '../@types';
 import { toCategoryAction } from '../client/store/reducer/category/category.reducer';
 import { toHomeAction } from '../client/store/reducer/home/home.reducer';
 import { toNewsAction } from '../client/store/reducer/news/news.reducer';
 import { toProductsAction } from '../client/store/reducer/products/products.reducer';
+import { toServicesAction } from '../client/store/reducer/services/services.reducer';
 import { AppStore } from '../client/store/state';
 import { apiService } from './api';
 
@@ -107,6 +109,47 @@ class InitialPropsServices {
 			}
 		} catch (error: any) {
 			store.dispatch(toNewsAction.newsRequestFailed(error.message.toString()));
+		}
+	}
+
+	async getServices(
+		store: AppStore,
+		page: number,
+		query: { [key: string]: any }
+	) {
+		const state = store.getState().news;
+		try {
+			if (
+				query['params'] === undefined ||
+				query['params'] === null ||
+				(!Array.isArray(query['params']) &&
+					query['params'].length === 1 &&
+					isNaN(page))
+			) {
+				throw Error('404. Not found serices');
+			}
+
+			const { data, error } = await apiService.get<IServicesReqData>(
+				`services`,
+				JSON.parse(
+					JSON.stringify({
+						...query,
+						limit: state.options.limit,
+						offset: page === 1 ? 0 : state.options.limit * (page - 1),
+					})
+				)
+			);
+			if (!state.isHydrate) {
+				if (data) {
+					store.dispatch(toServicesAction.setServices(data));
+				} else if (error) {
+					store.dispatch(toServicesAction.servicesRequestFailed(error));
+				}
+			}
+		} catch (error: any) {
+			store.dispatch(
+				toServicesAction.servicesRequestFailed(error.message.toString())
+			);
 		}
 	}
 }
