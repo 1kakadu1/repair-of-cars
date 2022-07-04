@@ -11,7 +11,15 @@ export const menuMock: IMenuItem[] = [
 	{
 		name: 'Услуги',
 		href: '/services',
-		subMenu: [],
+		subMenu: [
+			{
+				href: '/1',
+				preview: '',
+				description: 'Предоставим услуги различного рода',
+				name: 'Все услуги',
+				parentHref: RoutsPath.services,
+			},
+		],
 	},
 	{
 		name: 'Навигация',

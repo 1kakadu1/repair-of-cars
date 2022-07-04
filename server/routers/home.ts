@@ -17,8 +17,8 @@ export const home = async (
 
 	if (req.method === 'GET') {
 		try {
-			const services = await servicesService.get({
-				take: 10,
+			const services = await servicesService.getList({
+				take: 3,
 			});
 
 			const news = await newsService.getList({

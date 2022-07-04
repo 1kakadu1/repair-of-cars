@@ -53,7 +53,7 @@ const Home: NextPage = (props) => {
 						posts={services}
 						error={error}
 						loading={isLoading}
-						href={'/services'}
+						href={'/services/post'}
 					/>
 
 					<SectionProducts
@@ -68,7 +68,7 @@ const Home: NextPage = (props) => {
 					/>
 
 					<SectionProducts
-						title="Новое асортупление"
+						title="Новое поступление"
 						products={products.all}
 						link={{
 							href:

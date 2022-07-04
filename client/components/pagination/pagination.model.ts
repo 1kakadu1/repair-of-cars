@@ -4,6 +4,6 @@ export interface IPaginationProps {
 	limit?: number;
 	className?: string;
 	search?: string;
-	onChange?: (page: number, limit?: number, search?: string) => void;
+	onChange?: (page: number, search?: any, limit?: number) => void;
 	paginationOffset?: 0 | 1 | 2 | 3 | 4;
 }

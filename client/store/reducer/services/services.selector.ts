@@ -18,10 +18,16 @@ const total = createSelector(servicesSelector, ({ total }) => total);
 
 const options = createSelector(servicesSelector, ({ options }) => options);
 
+const isHydrate = createSelector(
+	servicesSelector,
+	({ isHydrate }) => isHydrate
+);
+
 export const toServicesSelector = {
 	isLoading,
 	services,
 	error,
 	total,
 	options,
+	isHydrate,
 };

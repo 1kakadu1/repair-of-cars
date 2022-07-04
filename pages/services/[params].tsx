@@ -5,22 +5,22 @@ import { CardPost } from '../../client/components/cards/card-post/card-post.comp
 import { Container } from '../../client/components/container/container.component';
 import { Loader } from '../../client/components/loader/loader.component';
 import { Pagination } from '../../client/components/pagination/pagination.component';
-import { newsSelector } from '../../client/store/reducer/news/news.selector';
 import { useAppDispatch, wrapper } from '../../client/store/state';
 import { intPropsServices } from '../../services/init-props';
 import { Title } from '../../client/components/title/title';
 import { Breadcrumbs } from '../../client/components/breadcrumbs/breadcrumbs.component';
 import { SubscribeSection } from '../../client/components/sections/subscribe-section/subscribe-section.component';
 import { fetchNewsList } from '../../client/store/reducer/news/news.reducer';
-import cl from './news.module.scss';
+import cl from './services.module.scss';
 import { PageLayout } from '../../client/components/layout/page/page.component';
+import { servicesSelector } from '../../client/store/reducer/services/services.selector';
 import { usePagination } from '../../client/components/pagination/usePagination.hook';
 
-const News: NextPage = () => {
+const Services: NextPage = () => {
 	const dispatch = useAppDispatch();
-	const { isLoading, news, total, options } = useSelector(newsSelector);
+	const { isLoading, services, total, options } = useSelector(servicesSelector);
 	const { page, onPaginationChange } = usePagination({
-		pathname: '/news',
+		pathname: '/services',
 		onChangePagination: (page: number) => {
 			dispatch(
 				fetchNewsList({
@@ -38,8 +38,8 @@ const News: NextPage = () => {
 		<div>
 			<PageLayout
 				head={{
-					title: 'Последние новости',
-					description: 'все новости нашего сайта',
+					title: 'Наши сервисы и услуги',
+					description: 'У нас присутствует множество различных услуг',
 				}}
 			>
 				<>
@@ -48,14 +48,14 @@ const News: NextPage = () => {
 						<Breadcrumbs
 							links={[
 								{
-									name: 'Новости и статьи',
+									name: 'Услуги',
 								},
 							]}
 						/>
-						<Title title="Новости и статьи" size={40} />
+						<Title title="Наши сервисы и услуги" size={40} />
 						<div className={cl.newsPage}>
 							<div className={`container__row`}>
-								{news.map((item) => (
+								{services.map((item) => (
 									<div
 										className={`container__col-12 container__col-md-6 container__col-xl-4 col-md-stretch`}
 										key={item.id}
@@ -83,15 +83,15 @@ const News: NextPage = () => {
 	);
 };
 
-News.getInitialProps = wrapper.getInitialPageProps(
+Services.getInitialProps = wrapper.getInitialPageProps(
 	(store) => async (context) => {
 		const { query } = context;
 		const page =
 			query['params'] && !Array.isArray(query['params'])
 				? parseInt(query['params'])
 				: 1;
-		await intPropsServices.getNews(store, page, query);
+		await intPropsServices.getServices(store, page, query);
 	}
 );
 
-export default News;
+export default Services;

@@ -18,12 +18,20 @@ export interface HomeData {
 }
 
 export interface IServicesReqData {
-	data: IServicesData[];
+	services: IServicesData[];
 	meta?: {
 		title: string;
 	};
 	options: ReqOptions;
 	total: number;
+}
+
+export interface IServicesSingleReqData {
+	services: IServicesData;
+	similar?: IServicesData[];
+	meta?: {
+		title: string;
+	};
 }
 
 export interface INewsReqData {

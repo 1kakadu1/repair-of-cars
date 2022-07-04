@@ -17,18 +17,20 @@ export const useFilterUrl = <T extends { [key: string]: any }>(
 	delete searchObj['page'];
 
 	const search = '?' + createSearch(searchObj);
-	const { pageMount, changePage } = options || {};
+	const { pageMount, changePage, offUpdate = false } = options || {};
 	const initRef = useRef(false);
 	const [newSearch, setNewSearch] = useState('');
-	const { offUpdate = false } = options || {};
+	const refPrevState = useRef<{ [key: string]: any }>({});
 
 	const updateUrl = (value: { [key: string]: any }) => {
 		const q = createSearch(value);
+		if (q !== search.substring(1)) {
+			push({
+				pathname: pathname + '/' + (changePage ? changePage : query['page']),
+				search: q === '' ? '' : '?' + q,
+			});
+		}
 		setNewSearch(q);
-		push({
-			pathname: pathname + '/' + (changePage ? changePage : query['page']),
-			search: q === '' ? '' : '?' + q,
-		});
 	};
 
 	useEffect(() => {

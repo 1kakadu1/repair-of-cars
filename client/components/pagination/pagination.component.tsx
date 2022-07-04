@@ -17,7 +17,7 @@ export const Pagination = ({
 	) => {
 		const target = e.currentTarget;
 		const page = target.dataset['page'] || 0;
-		onChange && onChange(Number(page), limit, search);
+		onChange && onChange(Number(page), search, limit);
 	};
 
 	const pagination = useMemo(() => {
