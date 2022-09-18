@@ -1,0 +1,10 @@
+.card{
+    &Label{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        &Link{
+            color: #4C65BD;
+        }
+    }
+}

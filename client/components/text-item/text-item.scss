@@ -1,7 +1,13 @@
+@import "../../../styles/vars.scss";
+
 .text-item{
     width: 100%;
     display: flex;
     align-items: flex-end;
+    &_column{
+        flex-direction: column;
+        align-items: flex-start;
+    }
     &__label{
         font-weight: 500;
         font-size: 14px;
@@ -17,6 +23,16 @@
         line-height: 16px;
         margin-left: 10px;
         width: 25%;
+    }
+    &_p{
+        margin: 0;
+        width: auto;
+        padding-bottom: 8px;
+    }
+    &_h1{
+        color: $black;
+        font-size: 16px;
+        padding-bottom: 8px;
     }
     &__dot{
         border-bottom: 1px dotted #6A6A6A;

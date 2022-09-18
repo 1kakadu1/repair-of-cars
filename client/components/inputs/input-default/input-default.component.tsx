@@ -67,11 +67,18 @@ export const InputDefault = ({
 			debounce ? debounceFn(null) : onValidation();
 		}
 	};
-	const isError = error !== '' && error !== undefined ? true : false;
+
+	const isError = validation
+		? error !== undefined
+			? true
+			: false
+		: errorProps !== undefined
+		? true
+		: false;
 
 	useEffect(() => {
-		if (errorProps !== undefined) setError(errorProps);
-	}, [errorProps]);
+		if (errorProps !== undefined && validation) setError(errorProps);
+	}, [errorProps, validation]);
 
 	return (
 		<div className={'input-form-control ' + className}>
@@ -127,7 +134,7 @@ export const InputDefault = ({
 			</div>
 			{
 				<div className={`input-form-control__error ${isError ? 'error' : ''}`}>
-					{error || ''}
+					{validation ? error : errorProps || ''}
 				</div>
 			}
 		</div>

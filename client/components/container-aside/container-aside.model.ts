@@ -5,4 +5,6 @@ export interface IContainerAsideProps {
 	sticky?: boolean;
 	height?: 'auto' | 'full';
 	shadow?: boolean;
+	classNameAside?: string;
+	classNameActions?: string;
 }
