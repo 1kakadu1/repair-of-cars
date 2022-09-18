@@ -15,7 +15,7 @@ export const ListItems = ({
 					if (item.href) {
 						return (
 							<li className={st.listItem} key={item.href}>
-								<Link href={item.href}>
+								<Link href={item.href + '&refresh=' + item.name}>
 									<a className={st.listItemText}>{item.name}</a>
 								</Link>
 							</li>

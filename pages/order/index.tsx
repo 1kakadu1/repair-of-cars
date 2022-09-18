@@ -7,7 +7,10 @@ import cl from './order.module.scss';
 import { ContainerAside } from '../../client/components/container-aside/container-aside.component';
 import { useContext, useState } from 'react';
 import { ItemContact } from '../../client/components/order/item-contact.component';
-import { radioListMock, radioListPaymentMock } from '../../client/components/order/order.mock';
+import {
+	radioListMock,
+	radioListPaymentMock,
+} from '../../client/components/order/order.mock';
 import { CardOrder } from '../../client/components/cards/card-order/card-order.component';
 import NotificationContext, {
 	NotificationStatus,

@@ -2,7 +2,7 @@ Test site for tire repair
 ## Demo
 You can check the work [heroku](https://shop-repair.herokuapp.com/)
 
-## Getting Started develop
+## Getting Started SQLite
 Add .env.local
 ```
 DATABASE_URL="file:./dev.db"
@@ -27,13 +27,6 @@ View data in the database
 
 ```bash
 npx prisma studio
-```
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
 ```
 
 ## Getting Started postgresql
@@ -62,6 +55,18 @@ dotenv -e .env.local -- npx prisma db seed
 
 ```
 
+Work with this database was carried out was carried out [supabase](https://supabase.com/)
+
+## Getting Started Develop
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
@@ -69,6 +74,20 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+## Sending to the repository
+
+```
+npm run prettier:write
+npm run prettier:check
+
+git add .
+git commit -m"TASK_ID: TASK_MSG"
+git pull origin dev
+git push
+
+```
+Deploy occurs in heroku automatically after updating the main branch
 
 ## Learn More
 
@@ -82,9 +101,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## Need to fix
 
 1.issue errors on the server via middleware
-2.in the footer, the links on the client are not working correctly
-3.in services, the grid on the tablet breaks
-4.large bread crumbs are poorly displayed
-5.add the title line-height component
-6.labelle input has the wrong style
-7.on the phone, the text pops up when there are no reviews
