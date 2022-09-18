@@ -1,4 +1,6 @@
 Test site for tire repair
+## Demo
+You can check the work [heroku](https://shop-repair.herokuapp.com/)
 
 ## Getting Started develop
 Add .env.local
@@ -77,8 +79,12 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Need to fix
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1.issue errors on the server via middleware
+2.in the footer, the links on the client are not working correctly
+3.in services, the grid on the tablet breaks
+4.large bread crumbs are poorly displayed
+5.add the title line-height component
+6.labelle input has the wrong style
+7.on the phone, the text pops up when there are no reviews

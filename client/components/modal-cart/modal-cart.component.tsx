@@ -8,6 +8,7 @@ import { CardCart } from '../cards/card-cart/card-cart.component';
 import empty from '../../assets/images/empty-cart.svg';
 import Image from 'next/image';
 import { ButtonDefault } from '../buttons/default/default.component';
+import { useRouter } from 'next/router';
 
 const Cart = ({ open, onClose, products, className = '' }: IModalCartProps) => {
 	const { onAddItem, onSubItem, onRemoveItem, totalPrice, onToggleCart } =
@@ -99,7 +100,7 @@ export const ModalCart = ({
 	const { onToggleCart, isOpen: open, cart } = useCart();
 
 	const onClose = () => onToggleCart(false);
-
+	const { pathname } = useRouter();
 	const portalRef = useRef<HTMLElement | null>();
 	const bodyRef = useRef<HTMLElement | null>();
 
@@ -126,6 +127,13 @@ export const ModalCart = ({
 				bodyRef.current.style.overflow = '';
 			}
 	}, [open]);
+
+	useEffect(() => {
+		if (bodyRef.current) {
+			bodyRef.current.style.overflow = '';
+		}
+		onToggleCart(false);
+	}, [pathname]);
 
 	return (
 		<>

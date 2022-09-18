@@ -1,4 +1,32 @@
 .slide-dropdown{
+    &__step{
+        margin-right: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #FF7E00;
+        width: 32px;
+        height: 32px;
+        border-radius: 32px;
+        color: #fff;
+        font-size: 14px;
+        background-color: #FF7E00;
+        transition: border 300ms ease, color 300ms ease, background-color 300ms ease;
+        &.disabled{
+            color: #E5E5E5; 
+            border: 1px solid #E5E5E5;
+            background-color: transparent;
+        }
+        &.slide-dropdown__valid{
+           color: #12BB9D; 
+           border: 1px solid #12BB9D;
+           background-color: transparent;
+        }
+    }
+    &__wrap-title{
+        display: flex;
+        align-items: center;
+    }
     &__button{
         cursor: pointer;
         display: flex;
@@ -15,5 +43,36 @@
         &.open{
             transform: rotate(0deg);
         }
+        &_color{
+            fill: #1A1E29;
+        }
     }
+    &__title{
+        font-weight: 500;
+        font-size: 16px;
+        color: #1A1E29;
+        padding: 10px 0px;
+    }
+    &__list.slide-dropdown__list_step{
+        padding-left: 48px;
+        position: relative;
+        margin-bottom: 12px;
+        &::before{
+            content: "";
+            height: 100%;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            width: 1px;
+            background-color: #FF7E00;
+            transition: background-color 300ms ease;
+        }
+        &.slide-dropdown__valid{
+            &::before{
+                background-color: #12BB9D;
+            }
+            
+        }
+    }
+    
 }

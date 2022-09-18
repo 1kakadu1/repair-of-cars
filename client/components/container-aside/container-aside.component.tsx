@@ -11,6 +11,8 @@ export const ContainerAside = ({
 	sticky,
 	height = 'full',
 	shadow,
+	classNameAside = '',
+	classNameActions = '',
 }: IContainerAsideProps) => {
 	const [open, setOpen] = useState(false);
 
@@ -32,7 +34,7 @@ export const ContainerAside = ({
 
 	return (
 		<div className="container-aside">
-			<div className="container-aside__actions">
+			<div className={`container-aside__actions ${classNameActions}`}>
 				<ButtonDefault
 					className="container-aside__action-filter"
 					outline
@@ -46,7 +48,7 @@ export const ContainerAside = ({
 					sticky ? 'container-aside_sticky' : ''
 				} ${shadow ? 'container-aside_shadow_desktop' : ''} ${
 					open ? 'container-aside_open' : ''
-				}`}
+				} ${classNameAside}`}
 			>
 				{React.cloneElement(aside, {
 					...aside.props,

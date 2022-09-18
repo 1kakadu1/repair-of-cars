@@ -1,0 +1,50 @@
+.form{
+    &Input{
+
+    }
+    &Row{
+        display: flex;
+        flex-direction: column;
+        @media (min-width: 580px) {
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+        &Column{
+            width: 100%;
+            @media (min-width: 580px) {
+                width: 48%;
+            }
+        }
+    }
+
+    &Item{
+        padding-bottom: 12px;
+    }
+    &Button{
+        max-width: 320px;
+        width: 100%;
+    }
+}
+
+.order{
+    &Actions{
+        display: none;
+    }
+    &Aside{
+        width: 100%;
+        position: relative;
+        visibility: visible;
+        opacity: 1;
+        margin-bottom: 40px;
+        margin-top: 40px;
+        order: 2;
+        z-index: 1;
+        @media (min-width: 992px) {
+          width: 392px;
+          order: 1;
+          margin-bottom: 0px;
+          margin-top: 0px;      
+        }
+    }
+}

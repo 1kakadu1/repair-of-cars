@@ -6,3 +6,4 @@ export * from './models/news';
 export * from './models/category';
 export * from './const';
 export * from './models/filters';
+export * from './models/order';

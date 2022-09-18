@@ -7,16 +7,16 @@ import { parseDate } from '../../../utils/functions';
 
 export const CardPost = <
 	T extends {
-		preview: string;
-		slug: string;
-		title: string;
+		preview?: string;
+		slug?: string;
+		title?: string;
 		description?: string;
 		price?: number;
 		workDesc?: string;
 		isStock?: boolean;
 		validUntil?: string;
-		tags?: string;
-		createdAt: string;
+		tags?: string | null;
+		createdAt?: string | null | Date;
 	}
 >({
 	data,
@@ -25,7 +25,7 @@ export const CardPost = <
 	const preview =
 		data.preview === '' || data.preview === undefined ? notFound : data.preview;
 	const tags =
-		data.tags !== undefined && Array.isArray(JSON.parse(data.tags))
+		data.tags !== undefined && data.tags && Array.isArray(JSON.parse(data.tags))
 			? (JSON.parse(data.tags) as string[])
 			: undefined;
 	const createDate = parseDate(data?.createdAt);

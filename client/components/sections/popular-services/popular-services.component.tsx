@@ -33,7 +33,10 @@ export const PostSection = ({
 										}`}
 										key={item.id}
 									>
-										<CardPost<any> data={item} href={href} />
+										<CardPost<IServicesData | INewsData>
+											data={item}
+											href={href}
+										/>
 									</div>
 								))}
 							</div>
