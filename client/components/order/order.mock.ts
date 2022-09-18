@@ -1,4 +1,4 @@
-import { IOrderItemLocation } from '../../@types';
+import { IOrderItemLocation } from '../../../@types';
 
 export const radioListMock: IOrderItemLocation[] = [
 	{

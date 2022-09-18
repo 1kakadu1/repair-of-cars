@@ -21,6 +21,7 @@ export const ProductsGrid = ({}: IProductsProps) => {
 	const { query } = useRouter();
 	const page = query.page || 1;
 	const search = JSON.parse(JSON.stringify(query));
+	const { refresh } = query;
 	delete search['page'];
 
 	const dispatch = useAppDispatch();
@@ -92,6 +93,23 @@ export const ProductsGrid = ({}: IProductsProps) => {
 			);
 		}
 	}, []);
+
+	useEffect(() => {
+		if (refresh && refresh !== '' && !isHydrate) {
+			dispatch(
+				fetchProductsList({
+					options: {
+						limit: options.limit,
+						offset: options.limit * (Number(page) - 1),
+						orderBy: options.orderBy || 'asc',
+					},
+					body: {
+						...search,
+					},
+				})
+			);
+		}
+	}, [refresh]);
 
 	return (
 		<div className={cl.products}>
