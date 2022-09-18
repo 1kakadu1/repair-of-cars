@@ -24,6 +24,13 @@
         &:hover{
             color: $hover;
         }
+        max-width: 200px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        @media (min-width: 992px) {
+            max-width: max-content;
+        }
     }
     &_link-disable{
         color: $hover;

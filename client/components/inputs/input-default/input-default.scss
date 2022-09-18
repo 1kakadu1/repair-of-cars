@@ -4,7 +4,10 @@ $border_color: #202020;
 .input-form-control{
     position: relative;
     &__label{
+        font-weight: 400;
         font-size: 14px;
+        line-height: 16px;
+        color: #6A6A6A;
     }
     &__wrapper-input{
         width: 100%;
