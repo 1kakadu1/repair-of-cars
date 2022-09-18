@@ -1,9 +1,9 @@
 import InputMask from 'react-input-mask';
-import { SlideDownCustom } from '../../../client/components/slide-down/slide-down.component';
-import { InputDefault } from '../../../client/components/inputs/input-default/input-default.component';
-import { MASK_PHONE } from '../../../client/const/const';
-import { ButtonDefault } from '../../../client/components/buttons/default/default.component';
-import cl from '../order.module.scss';
+import { SlideDownCustom } from '../slide-down/slide-down.component';
+import { InputDefault } from '../inputs/input-default/input-default.component';
+import { MASK_PHONE } from '../../const/const';
+import { ButtonDefault } from '../buttons/default/default.component';
+import cl from '../../../pages/order/order.module.scss';
 
 export interface IItemContact {
 	formik: any;

@@ -3,9 +3,9 @@ import { ButtonDefault } from '../../../client/components/buttons/default/defaul
 import { Radio } from '../../../client/components/inputs/radio/radio.component';
 import { SlideDownCustom } from '../../../client/components/slide-down/slide-down.component';
 import { TextItemLabel } from '../../../client/components/text-item/text-item.component';
-import cl from '../order.module.scss';
+import cl from '../../../pages/order/order.module.scss';
 
-interface IItemOrderLocation {
+interface IItemOrderPayment {
 	disabled: boolean;
 	defaultClose?: boolean;
 	onChangeRadio: (value: string, id: string, name?: string) => void;
@@ -13,19 +13,19 @@ interface IItemOrderLocation {
 	radioList: IOrderItemLocation[];
 	radio: string;
 	changeStepValue: (value: boolean) => void;
-	isValid: boolean;
+	isValid?: boolean;
 }
 
-export const ItemOrderLocation = ({
+export const ItemOrderPayment = ({
 	defaultClose,
 	disabled,
 	onChangeRadio,
-	step = 2,
+	step = 3,
 	radio,
 	radioList,
 	changeStepValue,
-	isValid,
-}: IItemOrderLocation) => {
+	isValid = false,
+}: IItemOrderPayment) => {
 	return (
 		<SlideDownCustom
 			title="Способ получения"
@@ -56,7 +56,7 @@ export const ItemOrderLocation = ({
 					className={cl.formButton}
 					onClick={() => changeStepValue(true)}
 				>
-					Перейти к способу оплаты
+					Все поля заполнены верно
 				</ButtonDefault>
 			</>
 		</SlideDownCustom>
