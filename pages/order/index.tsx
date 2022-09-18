@@ -6,10 +6,8 @@ import * as yup from 'yup';
 import cl from './order.module.scss';
 import { ContainerAside } from '../../client/components/container-aside/container-aside.component';
 import { useContext, useState } from 'react';
-import { ItemContact } from './components/item-contact.component';
-import { ItemOrderLocation } from './components/item-order-location';
-import { radioListMock, radioListPaymentMock } from './order.mock';
-import { ItemOrderPayment } from './components/item-order-payment';
+import { ItemContact } from '../../client/components/order/item-contact.component';
+import { radioListMock, radioListPaymentMock } from '../../client/components/order/order.mock';
 import { CardOrder } from '../../client/components/cards/card-order/card-order.component';
 import NotificationContext, {
 	NotificationStatus,
@@ -17,6 +15,8 @@ import NotificationContext, {
 import { Box } from '../../client/components/box/box.component';
 import { Breadcrumbs } from '../../client/components/breadcrumbs/breadcrumbs.component';
 import { Title } from '../../client/components/title/title';
+import { ItemOrderLocation } from '../../client/components/order/item-order-location';
+import { ItemOrderPayment } from '../../client/components/order/item-order-payment';
 
 const validationSchema = yup.object({
 	email: yup
